@@ -2,15 +2,14 @@
 	<div id="header">
 		<div class="logo">
 			盆景网站后台管理
-			<span>v1.0</span>
+			<!-- <span>sx</span> -->
 			<span v-show="isAdmin">[管理员]</span>
 		</div>
 		<div class="user">
-			<img class="avatar" src="../assets/images/manager/avatar.jpg" alt="">
-			{{name}}
 			
+			{{name}}
 		</div>
-		
+		<router-link to="/"><div class="exit">退出</div></router-link>
 	</div>
 </template>
 
@@ -21,7 +20,7 @@ export default {
 	data() {
 		return {
 			
-			
+			isAdmin:'ture',
 			name: ''
 		}
 	},
@@ -36,6 +35,9 @@ export default {
 </script>
 
 <style scoped>
+a{
+	color: #fff;
+}
 #header{
 	position: relative;
 	height: 80px;
@@ -56,20 +58,30 @@ export default {
 .user{
 	font-size: 16px;
 }
-.user .avatar{
-	width: 50px;
+/*.user .avatar{
+	/*position: absolute;*/
+	/*width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	vertical-align: middle;
-	margin-right: 10px;
-}
-.user .icon{
+	right: 50px;*/
+	/*margin-right: 10px;
+}*/
+/*.user .icon{
 	width: 17px;
     height: 17px;
     margin-left: 5px;
     vertical-align: middle;
+}*/
+#header .exit{
+width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	vertical-align: middle;
+	right: 50px;
+	font-size: 20px;
 }
-.user-x{
+/*.user-x{
 	position: absolute;
 	right: 20px;
 	top: 70px;
@@ -90,5 +102,5 @@ export default {
 }
 .user-x ul li:hover{
 	background: rgba(7,17,27,.5);
-}
+}*/
 </style>

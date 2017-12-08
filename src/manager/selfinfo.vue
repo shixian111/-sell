@@ -4,7 +4,7 @@
 		<div class="button" @click="toupdata()" v-show="isReadOnly">修改资料</div>
 		<div class="from-wrap">
 			<div class="ipunt-wrap">
-				<label for="">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
+				<label for="">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
 				<input type="text" placeholder="如：张三" :readonly="isReadOnly" v-model="username" autofocus>
 			</div>
 			<div class="ipunt-wrap">
@@ -16,7 +16,7 @@
 				<input type="text" placeholder="如：1995-09-26" :readonly="isReadOnly" v-model="bdate">
 			</div>
 			<div class="ipunt-wrap">
-				<label for="">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
+				<label for="">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
 				<input type="text" placeholder="男 或 女" :readonly="isReadOnly" v-model="sex">
 			</div>
 			<div class="ipunt-wrap">
@@ -28,7 +28,7 @@
 				<input type="text" placeholder="请填正确的地址" :readonly="isReadOnly" v-model="address">
 			</div>
 			<div class="ipunt-wrap">
-				<label for="">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:</label>
+				<label for="">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:</label>
 				<input type="text" placeholder="请填有效的手机号" :readonly="isReadOnly" v-model="phone">
 			</div>
 			<transition name="pull-up">

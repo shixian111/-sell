@@ -2,7 +2,7 @@
 	<section class="content-wrap">
 		
 		<div class="comments-wrap">
-			<div class="avatar"></div>
+			<!-- <div class="avatar"></div> -->
 			<div class="comments-header">
 				<input placeholder="填写新闻标题！">
 			</div>
@@ -59,28 +59,30 @@ export default {
 <style scoped>
 section.content-wrap{
 	position: relative;
-	width: 100%;
-	height: 660px;
+	/*width: 100%;*/
+	/*height: 660px;*/
 }
 
 .comments-wrap{
-	display: flex;
+	/*display: flex;*/
 	margin-left: 50px;
 	margin-top: 30px;
 }
 
-.avatar{
+/*.avatar{
 	width: 50px;
 	height: 50px;
 	margin: 0 20px;
 	border-radius: 50%;
 	background: url('../assets/images/manager/avatar.jpg') no-repeat;
 	background-size: cover;
-}
+}*/
 .comments-content{
 	position: relative;
 }
 .comments-header input{
+	/*display: inline-block;*/
+	width: 55%;
 border: none;
 	border-radius: 10px;
 	overflow: hidden;
@@ -88,10 +90,11 @@ border: none;
     outline: none;
     overflow: auto;
     padding: 4px;
-    margin-right: 3px;
+    margin-bottom: 5px;
     font-size: 12px;
 }
 .comments-content textarea{
+	width: 92%;
 	border: none;
 	border-radius: 10px;
 	overflow: hidden;
@@ -123,14 +126,14 @@ border: none;
 }
 .comments-button{
 	position: absolute;
-	right: 5px;
+	right:95px;
 	top: 120px;
 }
 
 .comments-list{
 	position: relative;
 	border-top: 1px solid #fff;
-	width: 70%;
+	width: 90%;
 	margin: 90px 0 50px 40px;
 	padding-left: 50px;
 }
