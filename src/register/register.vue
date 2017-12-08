@@ -8,7 +8,8 @@
    <div class="right_info f_r">
    		<div class="name">注册用户名:<input  type="text" size="30"></div>
    		<div class="pswd">注册密码:<input type="password" size="32"></div>
-   		<a class="sure f_l" href="#">确定</a><a class="back f_r" href="index.html">返回</a>
+   		<a class="sure f_l" >确定</a>
+      <router-link to="/"><a class="back f_r" href="index.html">返回</a></router-link>
    	</div>
    </div>
 
