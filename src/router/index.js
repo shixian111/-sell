@@ -21,7 +21,13 @@ import Comment from '@/usercenter/comment.vue'
 import Message from '@/usercenter/message.vue'
 import Address from '@/usercenter/address.vue'
 
+// 测试
 
+import ManagerHome from '@/manager/home'
+import ManagerSelf from '@/manager/selfinfo'
+import ManagerMgP from '@/manager/mgperson'
+import ManagerDeal from '@/manager/dealthing'
+import ManagerNews from '@/manager/news'
 
 
 
@@ -37,7 +43,7 @@ export default new Router({
         children:[
           
           {
- path:'/nav/index/detail',
+        path:'/nav/index/detail',
         name:Detail,
         component:Detail,
        
@@ -130,6 +136,29 @@ export default new Router({
         name:Register,
         component:Register,
           },
+   
+        {
+        path: '/mg/Home',
+        component: ManagerHome,
+        children : [{
+            path : '/mg/Home/selfinfo',
+            // 懒加载
+            component : resolve => require(['../manager/selfinfo.vue'],resolve)
+        },{
+          path : '/mg/Home/mgperson',
+          // 懒加载
+          component : resolve => require(['../manager/mgperson.vue'],resolve)
+        },{
+          path : '/mg/Home/dealthing',
+          // 懒加载
+          component : resolve => require(['../manager/dealthing.vue'],resolve)
+        },,{
+          path : '/mg/Home/news',
+          // 懒加载
+          component : resolve => require(['../manager/news.vue'],resolve)
+        }
+        ]
     
+          },
   ]
 })
