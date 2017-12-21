@@ -8,7 +8,7 @@
 				</p></div>
 				<div class="center_nav f_lf">
 					<p class="f_l">您好！欢迎来到室内盆景绿植商城</p>
-					<router-link to="/login"><a class="f_l" >[会员登录]</a></router-link>
+					<router-link to="/"><a class="f_l" >[会员登录]</a></router-link>
 					<router-link to="/register"><a class="f_l" >[注册]</a></router-link>
 				</div>
 				<div class="right_nav f_r">
@@ -29,12 +29,7 @@
 					<input name="keywords" type="text" class="keyword" value=""/>
 					<input name="imageField" type="submit" value="搜索" class="go">
 				</form>
-				<!-- 搜索框下面的字 -->
-				<div class="searchFormskey" style="clear:both; width:400px;">
-					<a href="#">蝴蝶兰</a>
-					<a href="#">发财树</a>
-					<a href="#">天堂鸟</a>
-				</div>
+				
 				<!-- 右边联系电话 -->
 				<div class="r_tel">
 					<img class="tel" src="../assets/images/index/tel.gif"></div>

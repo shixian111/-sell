@@ -37,7 +37,7 @@
     
       <div class="caseconmian"> 
        
-       <p style="background:#FFFFFF;padding:5px;"></p><div>
+       <p style="background:#FFFFFF;padding:36px;"></p><div>
 	&nbsp;</div>
 <div>
 	<span style="font-size:14px;">多肉植物在夏季怎样浇水，一直是养植多肉的一大难点和要点。不能通过看书，了解多久浇一次，而是要多实践，才能摸索出属于自己的心得。下面就是我给大家总结的夏季浇水心得，大家可以看看，然后结合自己的实际情况，活学活用。</span><br>

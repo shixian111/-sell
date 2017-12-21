@@ -6,46 +6,20 @@
 			<section class="img_nav clearfix">
 
 				<div class="img_banner">
-					<span id="banner_1" style="display: block;">
-						<a href="#">
-							<img src="../assets/images/index/slide1.jpg" alt=""></a>
-					</span>
-					<span id="banner_2" style="display: none;">
-						<a href="#">
-							<img src="../assets/images/index/slide2.jpg" alt=""></a>
-					</span>
-					<span id="banner_3" style="display: none;">
-						<a href="#">
-							<img src="../assets/images/index/slide3.jpg" alt=""></a>
-					</span>
-					<span id="banner_4" style="display: none;">
-						<a href="#">
-							<img src="../assets/images/index/slide4.jpg" alt=""></a>
-					</span>
+					<swiper :options="swiperOption" ref="mySwiperA" style="position:relative">
+					<swiper-slide  style="height:496px;float:left;"><span id="banner_1" ><a href="#"><img src="../assets/images/index/slide1.jpg" alt=""></a></span></swiper-slide>
+					<swiper-slide  style="height:496px;float:left;"><span id="banner_2" ><a href="#"><img src="../assets/images/index/slide2.jpg" alt=""></a></span></swiper-slide>
+					<swiper-slide  style="height:496px;float:left;"><span id="banner_3" ><a href="#"><img src="../assets/images/index/slide3.jpg" alt=""></a></span></swiper-slide>
+					<swiper-slide  style="height:496px;float:left;"><span id="banner_4" ><a href="#"><img src="../assets/images/index/slide4.jpg" alt=""></a></span></swiper-slide>	
+				    </swiper>	
 				</div>
-				<!-- 图片下面的小圆点 -->
-				<div class="banner_m1">
-					<ul>
-						<li class="active"></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</div>
+				
 			</section>
 			
 
-			<!-- 满赠*********************************************************************************************-->
-			<div class="gifts clearfix">
-				<div class="index_gifts">
-					<div class="gift_line">
-						<div class="mztop">
-							<img src="../assets/images/index/gqbt.gif"></div>
-						<div class="mzbottom">
-							<img src="../assets/images/index/gqnr.gif"></div>
-					</div>
-				</div>
+			<!-- 之前写过满赠，现在删除了*********************************************************************************************-->
+			 <div class="gifts clearfix">
+				
 				<!-- 一些盆景信息 ******************************************************************************-->
 				<div class="block clearfix">
 					<!-- 资讯 *******************************************************************************-->
@@ -313,21 +287,52 @@
 </template>
 
 <script scope>
-
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default{
 
 data(){
+	//http://blog.csdn.net/susuzhe123/article/details/69525609
 	return{
+		 swiperOption: {
+          // 所有配置均为可选（同Swiper配置）
+          slidesPerView:'auto',
+          notNextTick: true,
+        autoplay : 3000,
+        speed:300,
+          grabCursor : true,
+          setWrapperSize :true,
+          Height: 496,
+         autoplayDisableOnInteraction : false,
+          observeParents:true,
+          loop:true,
+        	effect :'fade',
+        	slidesPerGroup:1,
+      }
 
 	}
 },
-
+computed: {
+    swiper() {
+     return this.$refs.mySwiperA.swiper
+    }
+  },
+  mounted() {
+  	var _this=this
+  	   var timer=null
+  	   var i=0;
+  	    timer=setInterval(function(){
+     _this.swiper.slideTo(i%4, 1000, false)
+     i=i+1;
+    },2000)
+    
+   },
 methods:{
-
+    
 },
 components:{
-	
+	 swiper,
+    swiperSlide
 }
 }
 

@@ -6,8 +6,11 @@ import router from './router'
 import originJSONP from 'jsonp'
 import VueResource from 'vue-resource'
 import $ from 'jquery'
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min'
+import VueAwesomeSwiper from 'vue-awesome-swiper'//引入轮播组件
 Vue.use(VueResource)
-
+Vue.use(VueAwesomeSwiper)
 // request.headers.set('Authorization', localStorage.getItem('Authorization'))
 
 Vue.http.interceptors.push((request, next) => {
