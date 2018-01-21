@@ -9,12 +9,12 @@ import Newsinfo from '@/news/newsinfo.vue'
 import Cart from '@/cart/cart.vue'
 import Sum from '@/cart/sum.vue'
 
-import Culture from '@/culture/culture.vue'
-import Call from '@/call/call.vue'
-import Login from '@/login/login.vue'
-import Register from '@/register/register.vue'
-import Detail from '@/detail/detail.vue'
-import Help from '@/help/help.vue'
+import Culture from '@/culture/culture.vue'//盆景文化
+import Call from '@/call/call.vue'//联系我们
+import Login from '@/login/login.vue'//登录
+import Register from '@/register/register.vue'//祖册
+import Detail from '@/detail/detail.vue'//详细信息
+import Product from '@/product/product.vue'//产品
 import Usercenter from '@/usercenter/usercenter.vue'
 import Myorder from '@/usercenter/MyOrder.vue'
 import Comment from '@/usercenter/comment.vue'
@@ -44,78 +44,78 @@ export default new Router({
           
           {
         path:'/nav/index/detail',
-        name:Detail,
+        name:'Detail',
         component:Detail,
        
           },
           {
               path:'/nav/news',
-        name:News,
+        name:'News',
         component:News
       },
          {
            path:'/nav/news/newsinfo',
-        name:Newsinfo,
+        name:'Newsinfo',
         component:Newsinfo,
          },
         
           {
               path:'/nav/cart',
-        name:Cart,
+        name:'Cart',
         component:Cart,
           },
           {
               path:'/nav/cart/sum',
-        name:Sum,
+        name:'Sum',
         component:Sum,
 
        
           }, 
           {
               path:'/nav/culture',
-        name:Culture,
+        name:'Culture',
         component:Culture,
           },
           {
               path:'/nav/call',
-        name:Call,
+        name:'Call',
         component:Call,
           },
           {
-              path:'/nav/help',
-        name:Help,
-        component:Help,
+              path:'/nav/product',
+        name:'Product',
+        component:Product,
           }, 
            {
               path:'/nav/index',
-        name:Index,
+        name:'Index',
         component:Index,
 
        
           }, 
           {
               path:'/nav/usercenter',
-        name:Usercenter,
+        name:'Usercenter',
         component:Usercenter,
               children:[
                 {
                   path:'/nav/usercenter/myorder',
-                  name:Myorder,
+                  name:'Myorder',
                   component:Myorder,
                 },
                 {
                   path:'/nav/usercenter/comment',
-                  name:Comment,
+                  name:'Comment',
                   component:Comment,
                 },
 {
                   path:'/nav/usercenter/message',
-                  name:Message,
+                  name:'Message',
                   component:Message,
                 },
 {
                   path:'/nav/usercenter/address',
-                  name:Address,
+                  name:'Address',
                   component:Address,
                 },
 
@@ -128,18 +128,19 @@ export default new Router({
          
           {
               path:'/',
-        name:Login,
+        name:'Login',
         component:Login,
           },
            {
               path:'/register',
-        name:Register,
+        name:'Register',
         component:Register,
           },
    
         {
         path: '/mg/Home',
         component: ManagerHome,
+        name: 'ManagerHome',
         children : [{
             path : '/mg/Home/selfinfo',
             // 懒加载

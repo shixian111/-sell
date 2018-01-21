@@ -39,5 +39,14 @@
         
 </script>
 <style >
-@import '../assets/css/style.css'
+/*用户中心板块/
+  /* ====================
+     用户中心
+==================== */
+ .box_1 .userCenterBox{border:4px solid #f8f8f8; background-color:#fff;}
+ .box_1 .userCenterBox .userMenu a.curs{ font-weight:bold;}
+ .box_1 .userCenterBox .userMenu a{display:block; height:25px; line-height:25px; 
+    color:#3f3f3f; text-decoration:none; margin:0 0 3px 10px; padding-left:3px;
+    }
+ /*.box_1{border:1px solid #e2e2e2; background-color:#fff;}*/
 </style>

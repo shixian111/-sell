@@ -83,6 +83,14 @@
 
         
 </script>
-<style >
-@import '../assets/css/style.css'
+<style scope>
+/*购物车结算板块*/
+/* ====================
+     购物流程
+==================== */
+    .flowBox{ padding-bottom:5px;}
+   .flowBox h6{ background:#ececec; color:#666666; font-weight:bold}
+    .flowBox table{ margin:5px auto;}
+    /*2.62在购物车里面显示相关配件*/
+    
 </style>

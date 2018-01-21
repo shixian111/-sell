@@ -45,5 +45,14 @@
         
 </script>
 <style >
-@import '../assets/css/style.css'
+/*联系我们板块*/
+.about {
+  width: 780px;
+  float: left;
+  margin-top: 2px;
+}
+.allisttit img{
+  width:240px;
+  height:60px;
+}
 </style>

@@ -96,5 +96,70 @@ methods:{
         
 </script>
 <style >
-@import '../assets/css/style.css'
+/*caseinfo css*/
+.casetit {
+  background: url(../assets/images/news_href/case.gif) no-repeat;
+}
+.casecon {
+  width: 780px;
+  float: left;
+  margin-top: 30px;
+}
+.casecont {
+  width: 760px;
+  height: 65px;
+  padding: 0px 10px;
+  float: left;
+  border-bottom: 1px dotted #989898;
+}
+
+.casecontl {
+  width: 630px;
+  height: 65px;
+  float: left;
+}
+.casecontname h1 { font-size:18px;}
+.casecontname {
+  width: 100%;
+  height: 30px;
+  float: left;
+  line-height: 30px;
+  color: #474747;
+  font-size: 24px;
+}
+.caseconttime {
+  width: 100%;
+  height: 20px;
+  float: left;
+  line-height: 20px;
+  color: #818181;
+  font-size: 14px;
+  font-family: "宋体";
+}
+
+.casecontr {
+  width: 100px;
+  height: 37px;
+  float: right;
+}
+.last {
+  width: 39px;
+  height: 37px;
+  float: left;
+  background: url(../assets/images/news_href/casecon_03.gif) no-repeat;
+}
+.next {
+  width: 39px;
+  height: 37px;
+  float: right;
+  background: url(../assets/images/news_href/casecon_05.gif) no-repeat;
+}
+.caseconmian p {
+  padding: 20px;
+  line-height: 25px;
+  color: #4A4A4A;
+  font-size: 14px;
+  font-family: "宋体";
+  background: #F2F2F2;
+} 
 </style>

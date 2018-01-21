@@ -9,23 +9,13 @@ import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
 import './assets/js/bootstrap.min'
 import VueAwesomeSwiper from 'vue-awesome-swiper'//引入轮播组件
+import './assets/css/style.css'//引入一个自定义的css样式
+import IP from './Global_ip'
 Vue.use(VueResource)
 Vue.use(VueAwesomeSwiper)
 // request.headers.set('Authorization', localStorage.getItem('Authorization'))
 
-Vue.http.interceptors.push((request, next) => {
-        // ...
-        // 请求发送前的处理逻辑
-        // ...
-        request.headers.set('Authorization', localStorage.getItem('Authorization'))
-    next((response) => {
-        // ...
-        // 请求发送后的处理逻辑
-        // ...
-        // 根据请求的状态，response参数会返回给successCallback或errorCallback
-        return response
-    })
-})
+
 
 /* eslint-disable no-new */
 new Vue({

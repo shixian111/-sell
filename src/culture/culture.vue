@@ -145,5 +145,22 @@ components:{
         
 </script>
 <style >
-@import '../assets/css/style.css'
+/*盆景文化板块*/
+.allisttit{
+  font-size: 32px;
+  padding-left: 16px;
+  line-height: 65px;
+  font-weight: bold;
+  font-family: "方正舒体";
+  color:rgba(0,0,0,0.8);
+}
+
+.more{
+  color: #000;
+  text-align: right;
+  cursor: pointer;
+}
+.more_info{
+  display: none;
+}
 </style>

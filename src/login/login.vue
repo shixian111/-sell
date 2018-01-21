@@ -15,17 +15,17 @@
                             <label class="user-label" for="">
                                 用户名
                             </label>
-                            <input class="user-content" id="username" placeholder="请输入用户名" autocomplete="off">
+                            <input v-model="username" class="user-content" id="username" placeholder="请输入用户名" autocomplete="off">
                         </div>
                         <div class="user-item">
                             <label class="user-label" for="password">
                                 密码
                             </label>
-                            <input type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
+                            <input v-model="password" :keyup.13="login" type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
                         </div>
-                        <a class="btn btn-submit" id="submit">登录</a>
+                        <a class="btn btn-submit" id="submit" @click="login">登录</a>
                         <div class="link-item">
-                            <a class="link" href="./user-pass-reset.html" target="_blank">忘记密码</a>
+                            <a class="link" href="./user-pass-reset.html" target="_blank" >忘记密码</a>
                             <router-link to='/register'><a class="link" href="./user-register.html" target="_blank">免费注册</a></router-link>
                         </div>
                     </div>  
@@ -47,12 +47,37 @@ components:{
 },
 data(){
 	return{
-
+        username:'',
+        password:'',
 	}
 },
-
+created(){
+   
+},
 methods:{
-
+  login(){
+     $.ajax({
+    url:IP+'/shop/market/getAlreadyCompleteApply',
+    headers:{
+      Authorization:_this.$store.state.currentdata.token,
+    },
+    type: 'POST',
+    async:false,
+    dataType: 'json',
+    data: {
+      'marketId':1,
+      'page':0,
+      'size':15,
+    },
+  success:function(data){
+//     var res=data.data;        
+  },
+  error:function() {
+  alert("服务器内部错误")
+  }
+  },
+  );
+  }
 }
 }
         

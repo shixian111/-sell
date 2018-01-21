@@ -319,13 +319,16 @@ computed: {
   },
   mounted() {
   	var _this=this
-  	   var timer=null
+  	   window.timer=null
   	   var i=0;
   	    timer=setInterval(function(){
      _this.swiper.slideTo(i%4, 1000, false)
      i=i+1;
     },2000)
     
+   },
+   beforeDestroy(){
+   		window.clearTimeout(timer);
    },
 methods:{
     
@@ -339,6 +342,152 @@ components:{
 
         
 </script>
-<style >
- @import '../assets/css/style.css'
+<style scope>
+/* ====================
+图片导航部分
+==================== */
+.img_nav .img_banner{
+ width: 100%;
+ height: 496px;
+ margin:0 auto;
+ overflow: hidden;
+}
+/*包裹图片的盒子*/
+.img_nav .img_banner #banner_1,.img_nav .img_banner #banner_2,.img_nav .img_banner #banner_3,.img_nav .img_banner #banner_4{
+width: 1219px;
+ height: 496px;
+}
+
+/*每个图片的大小*/
+.img_nav .img_banner #banner_1 a img,.img_nav .img_banner #banner_2 a img,.img_nav .img_banner #banner_3 a img,.img_nav .img_banner #banner_4 a img{
+margin:0;
+padding: 0;
+ margin:0 auto;
+ display: block;
+}
+.img_nav .banner_m1 {
+  height: 22px;
+    width: 500px;
+    position: absolute;
+    margin: -50px 0px 0px 800px !important;
+}
+.img_nav .banner_m1 li {
+  cursor: pointer;
+    height: 22px !important;
+  width: 22px !important;
+  float: left;
+  background:transparent url("../assets/images/index/icn_baner_y.png") no-repeat;
+}
+.img_nav .banner_m1 li.active {
+    height: 22px !important;
+  width: 22px !important;
+  float: left !important;
+  background:transparent url("../assets/images/index/icn_baner_act.png") no-repeat; 
+}
+
+
+/* ====================
+满赠部分
+==================== */
+/*.gifts{ height:960px; padding-top:40px; background-image:url(../images/index/22.png);}
+.gifts .index_gifts{ width:1132px; height:885px; background-color:#442c60; padding-top:25px;}
+.gifts .index_gifts .gift_line{ width:1081px; height:857px; border: 1px solid #64517f; clear:both;}
+.gifts .index_gifts .gift_line .mztop { margin:0 auto; height:90px; width:425px; margin-top:20px;}
+.gifts .index_gifts .gift_line .mzbottom { margin:0 auto; width:986px;}*/
+/* ====================
+资讯部分
+==================== */
+.box_news{ width:1100px; height:190px; margin-top:60px; margin-bottom:10px;}
+#mallNews{width:220px; overflow:hidden;float: left; }
+.newart_tit{
+  width: 220px;
+height: 26px;
+line-height: 26px;
+font-weight: bold;
+text-align: left;
+color: #c80733;
+font-size: 18px;
+padding-left: 41px;
+text-decoration: none;
+
+margin-top: 26px;
+}
+.newart_tit a{
+  text-decoration: none;
+  color: #666666;
+  padding-left: 10px;
+}
+#mallNews .NewsList{background:#FFFFFF; padding:8px;}
+#mallNews .NewsList ul{ line-height:21px;}
+#mallNews .NewsList ul li{
+    background:url(../assets/images/index/bg.gif) no-repeat 0px -167px; 
+    padding:0px 0px 0px 10px;
+    line-height:21px; 
+    height:21px;
+    text-align: left;}
+
+
+/* ====================
+盆景商品部分 吸甲醛
+==================== */
+  .box{ overflow:hidden;}
+.box_3{ width:1100px;border:1px solid #dedede; background:url(../assets/images/index/tit1.gif) repeat-x;margin-top: 30px;}
+ .itemTit{height:34px; padding-left:290px; text-align:right; position:relative; 
+  
+   }  
+   .itemTit .tit{
+  width:200px;
+  height:20px;
+  position:absolute;
+  left:0;
+  top:0;
+  text-align:left;
+  padding:5px 0 0 20px;
+  font-weight:bold;
+  color:#333;
+  background:url(../assets/images/index/biao1.gif) 10px 8px no-repeat;
+  font-size: 14px;
+}
+.goodsItem{
+  width:200px;
+  float:left;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding-top: 0px;
+  padding-right: 9px;
+  padding-bottom: 15px;
+  padding-left: 9px;
+}
+.goods_border { border: 1px solid #d8d8d8; padding: 4px; }
+.goodsItem .goodsimg{width:180px; height:200px; border:1px solid #cdcece; margin-bottom:4px;}
+.goodsItem p{text-align:center; color:#3f3f3f; font-weight:normal}
+.goodsItem p a{color:#3f3f3f; text-decoration:none;}
+.goodsItem p a:hover{color:#ff6600; text-decoration:none;}
+.goodsItem span{width:40px; height:40px; position:absolute;left:0px; top:0px;}
+.goodsItem span.best{background:url(../assets/images/index/bg.gif) no-repeat 0px -304px;}
+.goodsItem span.news{background:url(../assets/images/index/bg.gif) no-repeat -75px -304px;}
+.goodsItem span.hot{background:url(../assets/images/index/bg.gif) no-repeat -161px -304px;}
+.goods_cat{ padding:10px;}
+.goods_cat .goodsItem{ padding:5px 5px 15px 10px; }
+.market{ font-size:12px; text-decoration:line-through; color:#999}
+ .f1{color:#ff3300; font-weight:bold;}
+/* ====================
+盆景商品部分 小型盆景
+==================== */
+.blank{height:8px; line-height:8px; clear:both; visibility:hidden;}
+.box_1{ border:1px solid #e2e2e2; background-color:#fff;}
+h3{height:32px; line-height:32px; font-size:12px; background:url(../assets/images/index/category_tit.gif) repeat-x; text-align:left; padding:0 12px; font-weight:100;}
+/* ====================
+盆景商品部分完毕
+==================== */
+
+
+
+
+
+
+
+
+
 </style>

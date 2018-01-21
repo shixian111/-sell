@@ -154,6 +154,10 @@
 
         
 </script>
-<style >
-@import '../assets/css/style.css'
+<style scope>
+.flowGoodsFittings{padding:10px;}
+    .flowGoodsFittings ul{height:1%; margin:5px 4px; float:left;}
+    .flowGoodsFittings li{float:left; width:120px;}
+    .flowGoodsFittings li.goodsimg{width:48px; margin-right:10px;}
+    .flowGoodsFittings li.goodsimg img{width:48px; height:48px; display:block;}
 </style>
