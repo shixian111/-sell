@@ -144,7 +144,7 @@
  <div class="box_1">
   <h3 style="position:relative"><img style="position:absolute; left:0px; top:8px;" src="../assets/images/index/biao2.gif"> <span><a href="#" style="font-size:14px; font-weight:bold">小型室内植物</a></span></h3>
     <div class="goods_cat">
-    <div class="clearfix goodsBox" style="border:none;width:1100px">
+    <div class="clearfix goodsBox" style="border:1px solid #dedede;width:1100px">
            <router-link  to="/nav/index/detail"> <div class="goodsItem ">
 	     <div class="goods_border">
            <a href="#" target="_blank"><img src="../assets/images/product/small1.jpg" alt="自动浇水花盆植物组合盆栽" class="goodsimg"></a><br>
@@ -342,7 +342,7 @@ components:{
 
         
 </script>
-<style scope>
+<style scoped>
 /* ====================
 图片导航部分
 ==================== */

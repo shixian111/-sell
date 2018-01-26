@@ -394,7 +394,7 @@ components:{
 
         
 </script>
-<style >
+<style scoped>
 /*产品详细信息板块*/
 /*当前位置*/
   #ur_here{

@@ -82,7 +82,7 @@ methods:{
 }
         
 </script>
-<style scope>
+<style scoped>
  /* 最外层容器 */
 .page-wrap{
     padding: 40px 0;

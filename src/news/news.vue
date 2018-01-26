@@ -178,106 +178,13 @@
 </div>
 </template>
 
-<script scope>
+<script >
 
 
         
 </script>
-<style >
-/*新闻板块*/
-.all {
-  width: 1100px;
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: 10px;
-}
-/*左边的新闻图片*/
-.allist {
-  width: 255px;
-  height: 794px;
-  padding-left: 18px;
-  padding-right: 21px;
-  float: left;
-  background: url(../assets/images/news_href/alllist.png) no-repeat;
-}
-.allisttit {
-  width: 255px;
-  height: 65px;
-  float: left;
-  border-bottom: 1px dashed #BBB9B8;
-}
-.newstit {
-  background: url(../assets/images/news_href/newstit_14.gif) no-repeat;
-}
-.listnav{
-  width:255px;
-  float: left;
-}
-/*右边的新闻*/
-.allcon {
-  width: 780px;
-  float: right;
-  margin-top: 35px;
-}
-/*行业新闻的位置*/
-.adress {
-  width: 780px;
-  height: 30px;
-  float: left;
-  border-bottom: 1px solid #E2E3E5;
-}
-/*行业新闻的位置的名字*/
-.adrname {
-  height: 30px;
-  float: left;
-  background: url(../assets/images/news_href/all_17.gif) no-repeat left;
-  padding-left: 45px;
-  line-height: 30px;
-  color: #276b06;
-  font-family: "宋体";
-  font-size: 14px;
-}
-/*行业新闻的位置的名字的右边*/
-.adrmbx {
-  float: right;
-  height: 30px;
-  color: #276b06;
-  font-family: "宋体";
-}
-.adrmbx a {
-  color: #276b06;
-}
-/*行业新闻的主体部分*/
-.allmain {
-  width: 780px;
-  float: left;
-}
-/*行业新闻的主体部分的头部*/
-.allmaintit {
-  width: 780PX;
-  float: left;
-  margin-top: 35px;
-}
-/*行业新闻的主体部分的头部中文部分*/
-.allmaintit .cn {
-  width: 100%;
-  height: 35px;
-  float: left;
-  text-align: left;
-  line-height: 35px;
-  color: #000000;
-  font-size: 30px;
-}
-/*行业新闻的主体部分的头部英文部分*/
-.allmaintit .eg {
-  width: 100%;
-  height: 15px;
-  float: left;
-  text-align: left;
-  line-height: 15px;
-  color: #000000;
-  font-size: 12px;
-}
+<style scoped>
+
 /*行业新闻的主体部分的列表*/
 .newslist {
   width: 780px;

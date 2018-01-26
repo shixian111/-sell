@@ -33,7 +33,7 @@
    </div>
 </template>
 
-<script scope>
+<script scoped>
 import headerView from '../components/header'
 import BottomView from '../components/bottom'
 export default{
@@ -43,7 +43,7 @@ components:{
 }
 }
 </script>
-<style>
+<style scoped>
 /* ====================
 banner部分(有首页等等)
 ==================== */

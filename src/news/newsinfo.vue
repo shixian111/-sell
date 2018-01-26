@@ -76,7 +76,7 @@
 
 </template>
 
-<script scope>
+<script>
 
 
 export default{
@@ -95,7 +95,7 @@ methods:{
 }
         
 </script>
-<style >
+<style scoped>
 /*caseinfo css*/
 .casetit {
   background: url(../assets/images/news_href/case.gif) no-repeat;
