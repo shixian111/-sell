@@ -86,60 +86,68 @@ updated(){
 },
 methods:{
     zuce(){
-      this.registxt='注册中...'
-      let userName=this.username
-      let userPwd=this.password
-      let userPwd2=this.repassword
-      let phone=this.phone
-      let email=this.email 
+      var _this=this
+      _this.registxt='注册中...'
+      let userName=_this.username
+      let userPwd=_this.password
+      let userPwd2=_this.repassword
+      let phone=_this.phone
+      let email=_this.email 
       
       if (!userName||!userPwd||!userPwd2) {
 
-        this.ErrorTip="账号密码不能为空"
-        this.registxt="立即注册"
+        _this.ErrorTip="账号密码不能为空"
+        _this.registxt="立即注册"
         return false
       }
       if (userPwd!=userPwd2) {
-        this.ErrorTip="两次输入的密码不一致"
-        this.registxt="立即注册"
+        _this.ErrorTip="两次输入的密码不一致"
+        _this.registxt="立即注册"
         return false
       }
       if (!(/^1[34578]\d{9}$/.test(phone))) {
-        this.ErrorTip="手机号格式不正确"
-        this.registxt="立即注册"
+        _this.ErrorTip="手机号格式不正确"
+        _this.registxt="立即注册"
         return false
       }
       if (!(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email))) {
-        this.ErrorTip="邮箱格式不正确"
-        this.registxt="立即注册"
+        _this.ErrorTip="邮箱格式不正确"
+        _this.registxt="立即注册"
         return false
       }
-        var _this=this
-         $.ajax({
-    url:IP+'/bonsai/user/create',
-    contentType: "application/json;charset=UTF-8",
-    type: 'POST',
-    async:false,
-    dataType: 'json',
-    data: {
-      'username':_this.username,
-      'cname':'sx',
-      'address':'',
-      'email':_this.email,
-      'flagrole':'user',
-      'headurl':'',
-      'mobile':_this.mobile,
-      'password':_this.password,
-      'state':'login',  
-    },
-  success:function(data){
-//     var res=data.data;        
-  },
-  error:function() {
-  alert("服务器内部错误")
-  }
-  },
-  );
+        
+        this.$http.post(IP+'/bonsai/user/create',{
+                  'username':_this.username,
+                  'cnname':'sx',
+                  'address':'',
+                  'email':_this.email,
+                  'flagrole':'user',
+                  'headurl':'',
+                  'mobile':_this.mobile,
+                  'password':_this.password,
+                  'state':'login',  
+        }, {
+          
+          'headers': {
+            'Content-Type': 'application/json',
+        }
+        })
+        .then((response)=>{
+          
+            if (response.body.code == '05') {
+                alert("用户已存在,请直接登录")
+                 _this.registxt="用户已存在"
+                 _this.toLogin()
+            }
+            else if (response.body.code == '00') {
+                alert("恭喜您，注册成功")
+                 _this.registxt="注册成功"
+                 _this.toLogin()
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
 },
   toLogin(){
      this.$router.push({path:'/'})

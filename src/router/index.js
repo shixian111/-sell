@@ -22,7 +22,6 @@ import Message from '@/usercenter/message.vue'
 import Address from '@/usercenter/address.vue'
 
 // 测试
-
 import ManagerHome from '@/manager/home'
 import ManagerSelf from '@/manager/selfinfo'
 import ManagerMgP from '@/manager/mgperson'
@@ -108,12 +107,12 @@ export default new Router({
                   name:'Comment',
                   component:Comment,
                 },
-{
+                {
                   path:'/nav/usercenter/message',
                   name:'Message',
                   component:Message,
                 },
-{
+                {
                   path:'/nav/usercenter/address',
                   name:'Address',
                   component:Address,

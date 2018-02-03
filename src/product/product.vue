@@ -55,12 +55,10 @@
 							<h3>
 								<span>商品列表</span>
 
-								<a href="">
-									<img src="../assets/images/product/goods_id_default.gif" alt="按上架时间排序"></a>
+								
 								<a href="">
 									<img src="../assets/images/product/shop_price_default.gif" alt="按价格排序"></a>
-								<a href="">
-									<img src="../assets/images/product/last_update_default.gif" alt="按更新时间排序"></a>
+								
 
 							</h3>
 							<div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 5px;">

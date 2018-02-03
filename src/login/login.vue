@@ -9,7 +9,7 @@
                     <div class="user-box">
                         <div class="error-item">
                            
-                            <p class="err-msg">Error</p>
+                            <p class="err-msg">{{ErrorTip}}</p>
                         </div>
                         <div class="user-item">
                             <label class="user-label" for="">
@@ -49,38 +49,54 @@ data(){
 	return{
         username:'',
         password:'',
+         ErrorTip:'',//错误提示
+        registxt:'立即登录',//登录的提示
 	}
 },
-created(){
-   
+updated(){
+ 
+   //当ErrorTip有值的时候才会显示
+    if (this.ErrorTip!='')
+    {$('.user-con .user-box .error-item').css({
+        display: 'block'
+    });
+    }
 },
 methods:{
   login(){
-     $.ajax({
-    url:IP+'/shop/market/getAlreadyCompleteApply',
-    headers:{
-      Authorization:_this.$store.state.currentdata.token,
-    },
-    type: 'POST',
-    async:false,
-    dataType: 'json',
-    data: {
-      'marketId':1,
-      'page':0,
-      'size':15,
-    },
-  success:function(data){
-//     var res=data.data;        
-  },
-  error:function() {
-  alert("服务器内部错误")
-  }
-  },
-  );
-  }
-}
-}
-        
+         var _this=this
+      _this.registxt='登录中...'
+      let userName=_this.username
+      let userPwd=_this.password
+      if (!userName||!userPwd) {
+
+        _this.ErrorTip="账号密码不能为空"
+        _this.registxt="立即登录"
+        return false
+      }
+         this.$http.post(IP+'/bonsai/user/create',{
+                  'username':_this.username,
+                  'password':_this.password,       
+        },{
+          
+          'headers': {
+            'Content-Type': 'application/json',
+        }
+        })
+        .then((response)=>{
+          if (response.body.code == '00') {
+                alert("恭喜您，登录成功")
+                 _this.registxt="登录成功"
+                 this.$router.push({path:'/nav/index'})
+            }
+            console.log(response)
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+    
+},
+  }   }   
 </script>
 <style scoped>
  /* 最外层容器 */
