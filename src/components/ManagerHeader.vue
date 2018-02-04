@@ -42,12 +42,14 @@ a{
 	position: relative;
 	height: 80px;
 	line-height: 80px;
-	display: flex;
+	
 	padding: 0 20px;
 	justify-content: space-between;
 	z-index: 12;
 }
 .logo{
+	position: absolute;
+	left:150px;
 	font-size: 26px;
 	font-weight: 600;
 }
@@ -58,49 +60,15 @@ a{
 .user{
 	font-size: 16px;
 }
-/*.user .avatar{
-	/*position: absolute;*/
-	/*width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	vertical-align: middle;
-	right: 50px;*/
-	/*margin-right: 10px;
-}*/
-/*.user .icon{
-	width: 17px;
-    height: 17px;
-    margin-left: 5px;
-    vertical-align: middle;
-}*/
+
 #header .exit{
+	position: absolute;
 width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	vertical-align: middle;
-	right: 50px;
+	right: 150px;
 	font-size: 20px;
 }
-/*.user-x{
-	position: absolute;
-	right: 20px;
-	top: 70px;
-	width: 100px;
-	height: 100px;
-	z-index: 1000;
-}
-.user-x ul li{
-	list-style: none;
-	width: 100px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-	cursor: pointer;
-}
-.user-x ul li a{
-	display: block;
-}
-.user-x ul li:hover{
-	background: rgba(7,17,27,.5);
-}*/
+
 </style>

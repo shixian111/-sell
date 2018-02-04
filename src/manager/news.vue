@@ -90,11 +90,14 @@ border: none;
     outline: none;
     overflow: auto;
     padding: 4px;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     font-size: 12px;
+    color: #000;
 }
 .comments-content textarea{
+	 color: #000;
 	width: 92%;
+	height:450px;
 	border: none;
 	border-radius: 10px;
 	overflow: hidden;
@@ -127,14 +130,14 @@ border: none;
 .comments-button{
 	position: absolute;
 	right:95px;
-	top: 120px;
+	top: 500px;
 }
 
 .comments-list{
 	position: relative;
 	border-top: 1px solid #fff;
 	width: 90%;
-	margin: 90px 0 50px 40px;
+	margin: 20px 0 50px 40px;
 	padding-left: 50px;
 }
 .lifeline{

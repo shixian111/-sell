@@ -41,9 +41,13 @@
                             </label>
                             <input v-model="email" class="user-content" id="email" placeholder="请输入邮箱" autocomplete="off">
                         </div>
-                        
-                       
                         <a class="btn btn-submit" id="submit" @click="zuce">{{registxt}}</a>
+                        <!-- <span></span>
+                        <span><input name="seller" type="radio" value="注册成卖家" />注册成卖家</span> -->
+                        <form action="" method="get">
+                            <label id="buyer"><input name="zuce" type="radio" value="注册成买家"  checked/>注册成买家</label>
+                            <label><input name="zuce" type="radio" value="注册成卖家" id="seller"/>注册成卖家</label>
+                        </form>
                         <div class="link-item">
                             <a class="link" @click="toLogin">已有帐号，去登录>></a>
                         </div>
@@ -66,6 +70,7 @@ components:{
 },
 data(){
    return{
+        flagrole:'buyer',//角色默认为买家
         username:'',//用户名
         password:'',//密码
         repassword:'',//再次确认密码
@@ -75,8 +80,19 @@ data(){
         registxt:'立即注册',//注册的提示
    }
 },
+mounted(){
+
+},
 updated(){
- 
+  var _this=this
+    if ($('#buyer input')[0].checked) {
+        _this.flagrole="buyer"
+    }
+    else{
+      
+       _this.flagrole="seller"
+    }
+   
    //当ErrorTip有值的时候才会显示
     if (this.ErrorTip!='')
     {$('.user-con .user-box .error-item').css({
@@ -121,7 +137,7 @@ methods:{
                   'cnname':'sx',
                   'address':'',
                   'email':_this.email,
-                  'flagrole':'user',
+                  'flagrole':_this.flagrole,
                   'headurl':'',
                   'mobile':_this.mobile,
                   'password':_this.password,

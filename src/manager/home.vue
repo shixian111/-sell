@@ -29,9 +29,9 @@ export default {
 	
 	data() {
 		return {
-			sidebarList: [{content: '个人信息', url: '/mg/Home/selfinfo'},
+			sidebarList: [
 				{content: '用户管理', url: '/mg/Home/mgperson'},
-				{content: '审核处理', url: '/mg/Home/dealthing'},
+				{content: '新闻管理', url: '/mg/Home/mgnews'},
 				{content: '新闻发布', url: '/mg/Home/news'}
 				
 			]
@@ -208,10 +208,11 @@ export default {
 }
 .list-item{
 	list-style: none;
-	height: 50px;
-	line-height: 50px;
+	height: 60px;
+	line-height: 60px;
 	text-align: center;
 	font-family: '微软雅黑';
+	font-size: 18px;
 }
 .list-item a.active{
 	display: block;
@@ -222,9 +223,9 @@ export default {
 #home{
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 758px;
 	color: #fff;
-	/* box-sizing: border-box; */
+	 box-sizing: border-box; 
 	overflow-x: hidden;
 	background: rgba(7,17,27,0.95);
 }

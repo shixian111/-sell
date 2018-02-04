@@ -160,10 +160,17 @@ visibility:hidden;
   color: #000000;
   font-size: 12px;
 }
-
-
-
-
+/*覆盖element-ui样式*/
+.el-table__fixed,.el-table__fixed-header-wrapper,.el-table__fixed-right{
+  display:none;
+}
+.cell{
+  font-size: 19px;
+  height:30px;
+}
+.el-button{
+  background-color: rgba(0,0,0,0);
+}
 
 
   

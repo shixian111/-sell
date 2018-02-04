@@ -1,35 +1,42 @@
 <template>
 	<section class="content-wrap">
 
-		<div class="button" @click="toupdata()" v-show="isReadOnly">修改资料</div>
+		
 		<div class="from-wrap">
 			<div class="ipunt-wrap">
 				<label for="">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
-				<input type="text" placeholder="如：张三" :readonly="isReadOnly" v-model="username" autofocus>
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="如：张三" v-show="isReadOnly" v-model="username" autofocus>
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">身份证号:</label>
-				<input type="text" placeholder="请填17位有效身份证号" :readonly="isReadOnly" v-model="idcard">
+				<label for="" v-show="!isReadOnly">421XXX19970626XXXX</label>
+				<input type="text" placeholder="请填17位有效身份证号" v-show="isReadOnly" v-model="idcard">
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">出生日期:</label>
-				<input type="text" placeholder="如：1995-09-26" :readonly="isReadOnly" v-model="bdate">
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="如：1995-09-26" v-show="isReadOnly" v-model="bdate">
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
-				<input type="text" placeholder="男 或 女" :readonly="isReadOnly" v-model="sex">
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="男 或 女" v-show="isReadOnly" v-model="sex">
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">电子邮件:</label>
-				<input type="text" placeholder="请填有效的电子邮箱" :readonly="isReadOnly" v-model="email">
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="请填有效的电子邮箱" v-show="isReadOnly" v-model="email">
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">通信地址:</label>
-				<input type="text" placeholder="请填正确的地址" :readonly="isReadOnly" v-model="address">
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="请填正确的地址" v-show="isReadOnly" v-model="address">
 			</div>
 			<div class="ipunt-wrap">
 				<label for="">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:</label>
-				<input type="text" placeholder="请填有效的手机号" :readonly="isReadOnly" v-model="phone">
+				<label for="" v-show="!isReadOnly">sx</label>
+				<input type="text" placeholder="请填有效的手机号" v-show="isReadOnly" v-model="phone">
 			</div>
 			<transition name="pull-up">
 				<div class="ipunt-button" v-show="!isReadOnly">
@@ -53,7 +60,7 @@ export default {
 			email: '',
 			address: '',
 			phone: '',
-			isReadOnly: true,
+			isReadOnly: false,
 		}
 	},
 	created() {
@@ -94,7 +101,7 @@ section.content-wrap .button{
 	top: 20px;
 	left: 60%;
 	width: 120px;
-	height: 30px;
+	height: 45px;
 	line-height: 30px;
 	text-align: center;
 	padding: 8px 20px;
@@ -129,6 +136,7 @@ a.gv:hover {
 	margin-top: 20px;
 }
 .ipunt-wrap label{
+	height:50px;
 	width: 100px;
 	text-align: center;
 	display: inline-block;
