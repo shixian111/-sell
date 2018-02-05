@@ -23,7 +23,7 @@
                             </label>
                             <input v-model="password" :keyup.13="login" type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
                         </div>
-                        <a class="btn btn-submit" id="submit" @click="login">登录</a>
+                        <a class="btn btn-submit" id="submit" @click="login">{{registxt}}</a>
                         <div class="link-item">
                             <a class="link" href="./user-pass-reset.html" target="_blank" >忘记密码</a>
                             <router-link to='/register'><a class="link" href="./user-register.html" target="_blank">免费注册</a></router-link>
@@ -74,7 +74,7 @@ methods:{
         _this.registxt="立即登录"
         return false
       }
-         this.$http.post(IP+'/bonsai/user/create',{
+         this.$http.post(IP+'/bonsai/user/login',{
                   'username':_this.username,
                   'password':_this.password,       
         },{
@@ -85,11 +85,26 @@ methods:{
         })
         .then((response)=>{
           if (response.body.code == '00') {
+
+               if (response.body.data!=null) 
+               {
                 alert("恭喜您，登录成功")
-                 _this.registxt="登录成功"
-                 this.$router.push({path:'/nav/index'})
+                _this.registxt="登录成功"
+                var flagrole=response.body.data.flagrole
+
+                this.$store.commit('setRole', flagrole)
+                console.log(this.$store.state.currentdata.Role)
+                // console.log()
+                if (flagrole=="buyer") {this.$router.push({path:'/nav/index'})}
+                else if (flagrole=="seller") {this.$router.push({path:'/mg/Home'})}
+                else if (flagrole=="admin") {this.$router.push({path:'/mg/Home'})}
+              }
+                else{
+                    alert("用户名或密码不存在")
+                     _this.registxt="登录"
+                }
             }
-            console.log(response)
+            
         })
         .catch(function(){
           alert("出错啦")

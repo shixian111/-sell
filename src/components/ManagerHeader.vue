@@ -1,9 +1,11 @@
 <template>
 	<div id="header">
 		<div class="logo">
-			盆景网站后台管理
-			<!-- <span>sx</span> -->
-			<span v-show="isAdmin">[管理员]</span>
+			<span v-show="this.$store.state.currentdata.Role=='admin'">盆景网站后台管理</span>
+			<span v-show="this.$store.state.currentdata.Role=='seller'">天堂鸟室内盆景</span>
+			
+			<span v-show="this.$store.state.currentdata.Role=='admin'">[管理员]</span>
+			<span v-show="this.$store.state.currentdata.Role=='seller'">[卖家]</span>
 		</div>
 		<div class="user">
 			
@@ -20,7 +22,7 @@ export default {
 	data() {
 		return {
 			
-			isAdmin:'ture',
+			
 			name: ''
 		}
 	},
@@ -54,7 +56,7 @@ a{
 	font-weight: 600;
 }
 .logo span{
-	font-size: 16px;
+	font-size: 21px;
 	margin-left: 15px;
 }
 .user{

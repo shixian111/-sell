@@ -4,24 +4,14 @@
 		<div class="comments-wrap">
 			<!-- <div class="avatar"></div> -->
 			<div class="comments-header">
-				<input placeholder="填写新闻标题！">
+				<input placeholder="填写新闻标题！" v-model="newstitle">
 			</div>
 			<div class="comments-content">
-				<textarea name="" id="" cols="85" rows="5" placeholder="填写新闻内容！" v-model="content"></textarea>
+				<textarea name="" id="" cols="85" rows="5" placeholder="填写新闻内容！" v-model="newscontent"></textarea>
 				<div class="comments-button gv" @click="addCommen()">发布新闻</div>
 			</div>
 		</div>
 
-		<div class="comments-list">
-			<div class="lifeline"></div>
-			<div class="comments-item" v-for="(item,index) in msgboardList">
-				<div class="dateview">{{ item.time | time}}</div>
-				<div class="comment">
-					<div class="name">{{item.username}}：</div>
-					<div class="words">{{item.content}}</div>
-				</div>
-			</div>			
-		</div>
 	</section>
 </template>
 
@@ -32,7 +22,8 @@ export default {
 	data() {
 		return {
 			msgboardList: '',
-			content: ''
+			newscontent: '',//新闻内容
+			newstitle: '',//新闻标题
 		}
 	},
 	filters: {
@@ -49,7 +40,28 @@ export default {
 			
 		},
 		addCommen() {
-			
+			var _this=this
+			this.$http.post(IP+'/bonsai/news/add',{
+                  'newstitle':_this.newstitle,
+                  'newscontent':_this.newscontent,
+                  'newpicture':'',
+                  'newspush':'admin'
+        }, {
+          
+          'headers': {
+            'Content-Type': 'application/json',
+        }
+        })
+        .then((response)=>{
+           if (response.body.code == '00') {
+                alert(response.body.message)
+                _this.newstitle=''
+                _this.newscontent=''
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
 			
 		}
 	}

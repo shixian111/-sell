@@ -29,15 +29,25 @@ export default {
 	
 	data() {
 		return {
-			sidebarList: [
+			sidebarList: [],
+			adminSidebar:[
 				{content: '用户管理', url: '/mg/Home/mgperson'},
 				{content: '新闻管理', url: '/mg/Home/mgnews'},
-				{content: '新闻发布', url: '/mg/Home/news'}
-				
+				{content: '新闻发布', url: '/mg/Home/news'}	
+			],
+			sellerSidebar:[
+				{content:'商品管理',url: '/mg/Home/mgproduct'},
 			]
 		}
 	},
-
+	created() {
+		if (this.$store.state.currentdata.Role=="admin") {
+			this.sidebarList = this.sidebarList.concat(this.adminSidebar)
+			
+		} else if (this.$store.state.currentdata.Role=="seller"){
+			this.sidebarList = this.sidebarList.concat(this.sellerSidebar)
+		}
+	},
 	mounted() {
 		var canvas = document.querySelector('canvas'),
 		ctx = canvas.getContext('2d')
