@@ -27,9 +27,11 @@ import ManagerHome from '@/manager/home'
 import ManagerMgP from '@/manager/mgperson'
 
 import NewsDeclar from '@/manager/news'
+import NewsInfo from '@/manager/newsinfo'
 import ManagerNews from '@/manager/mgnews'
-
-
+//卖家界面
+import ManagerProduct from '@/seller/mgproduct'
+import AddProduct from '@/seller/addproduct'
 
 
 Vue.use(Router)
@@ -151,9 +153,27 @@ export default new Router({
           component : resolve => require(['../manager/news.vue'],resolve)
         },{
           path : '/mg/Home/mgnews',
+          name: 'ManagerNews',
+          component: ManagerNews,
+        },
+        {
+          path : '/mg/Home/newsinfo',
           // 懒加载
-          component : resolve => require(['../manager/mgnews.vue'],resolve)
-        }
+          name: 'NewsInfo',
+         component: NewsInfo,
+        },
+        {
+          path : '/mg/Home/mgproduct',
+          // 懒加载
+          name: 'ManagerProduct',
+         component: ManagerProduct,
+        },
+        {
+          path : '/mg/Home/addproduct',
+          // 懒加载
+          name: 'AddProduct',
+         component: AddProduct,
+        },
         ]
     
           },

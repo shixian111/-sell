@@ -21,11 +21,11 @@
                             <label class="user-label" for="password">
                                 密码
                             </label>
-                            <input v-model="password" :keyup.13="login" type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
+                            <input v-model="password" v-on:keyup.13="login" type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
                         </div>
-                        <a class="btn btn-submit" id="submit" @click="login">{{registxt}}</a>
+                        <a class="btn btn-submit" id="submit" @click="login" >{{registxt}}</a>
                         <div class="link-item">
-                            <a class="link" href="./user-pass-reset.html" target="_blank" >忘记密码</a>
+                            <!-- <a class="link" href="./user-pass-reset.html" target="_blank" >忘记密码</a> -->
                             <router-link to='/register'><a class="link" href="./user-register.html" target="_blank">免费注册</a></router-link>
                         </div>
                     </div>  
@@ -91,10 +91,12 @@ methods:{
                 alert("恭喜您，登录成功")
                 _this.registxt="登录成功"
                 var flagrole=response.body.data.flagrole
-
+                var userid=response.body.data.id
+                
                 this.$store.commit('setRole', flagrole)
-                console.log(this.$store.state.currentdata.Role)
-                // console.log()
+                this.$store.commit('setuserid', userid)
+                
+                console.log(this.$store.state.currentdata.UserId)
                 if (flagrole=="buyer") {this.$router.push({path:'/nav/index'})}
                 else if (flagrole=="seller") {this.$router.push({path:'/mg/Home'})}
                 else if (flagrole=="admin") {this.$router.push({path:'/mg/Home'})}

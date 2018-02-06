@@ -3,7 +3,13 @@
 		<el-table
     :data="tableData"
     border
-    style="width: 100%;padding:20px 0 20px 200px;">
+    style="width: 100%;padding:20px 0 20px 160px;">
+    <el-table-column
+      prop="newsId"
+      label="新闻ID"
+      width="120"
+     >
+    </el-table-column>
     <el-table-column
       prop="newsTitle"
       label="新闻标题"
@@ -32,7 +38,7 @@ export default {
 		return {
 			tableData: [],
 			page:'1',//默认获取第一页数据
-			userList: '',//所有用户信息
+			
 			
 		}
 	},
@@ -56,8 +62,8 @@ export default {
                 console.log(data)
                 for (var i = 0; i < data.length; i++) {
                 	_this.tableData.push({
+                    "newsId":data[i].id||"暂无",
                 		"newsTitle":data[i].newstitle||"暂无",
-                		
                 		})
                 }
                  
@@ -67,7 +73,7 @@ export default {
           alert("出错啦")
         })
 		},
-		//删除某个用户
+		//删除某条新闻
 	     handleDelete(index,row) {
 	     	var _this=this
        console.log(index)
@@ -95,6 +101,11 @@ export default {
           alert("出错啦")
         })}
         
+      },
+      //查看新闻详情
+      handleClick(row){
+        this.$store.state.setNewsID=row.newsId,
+        this.$router.push('/mg/Home/newsinfo')
       }
 }
 	}
