@@ -6,42 +6,63 @@
 		<el-table
     :data="tableData"
     border
-    style="width: 100%">
+    style="width: 100%" class="tb-edit" highlight-current-row>
     <el-table-column
       prop="productId"
       label="商品id"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productId" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productId}}</span>
+      </template>
     </el-table-column>
     <el-table-column
       prop="productName"
       label="商品名"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productName" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productName}}</span>
+      </template>
     </el-table-column>
     
     <el-table-column
       prop="productstora"
       label="商品库存"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productstora" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productstora}}</span>
+      </template>
     </el-table-column>
     <el-table-column
       prop="productPrice"
       label="商品价格"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productPrice" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productPrice}}</span>
+      </template>
     </el-table-column>
     <el-table-column
       prop="productPic"
       label="商品图片"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productPic" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productPic}}</span>
+      </template>
     </el-table-column>
     <el-table-column
       prop="productSell"
       label="商品销量"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productSell" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productSell}}</span>
+      </template>
     </el-table-column>
      <el-table-column
       prop="productType"
       label="商品类别"
       width="160">
+      <template scope="scope">
+                    <el-input size="small" v-model="scope.row.productType" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productType}}</span>
+      </template>
     </el-table-column>
     <el-table-column
       fixed="right"
@@ -50,7 +71,6 @@
       <template slot-scope="scope">
 
         <el-button @click="handleDelete(scope.$index,scope.row)" type="text" size="small">删除</el-button>
-         <el-button @click="handleDelete(scope.$index,scope.row)" type="text" size="small">修改</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -92,13 +112,15 @@ export default {
                 var data=response.body.data.items
                 for (var i = 0; i < data.length; i++) {
                 	_this.tableData.push({
-                		"username":data[i].username||"暂无",
-                		"cname":data[i].cnname||"暂无",
-                		"flagrole":data[i].flagrole||"暂无",
-                		"mobile":data[i].mobile||"暂无",
-                		"address":data[i].address||"暂无",
-                		"email":data[i].email||"暂无",
-                		"id":data[i].id||"暂无",
+                		"productId":data[i].id||"暂无",
+                		"productName":data[i].goodsname||"暂无",
+                		"productstora":data[i].storage||"暂无",
+                		"productPrice":data[i].price||"暂无",
+                		"productPic":data[i].pictures||"暂无",
+                    "productSell":data[i].soldnumber||"暂无",
+                		
+                		"productType":data[i].type==0?"小型室内盆景":"吸甲醛的室内盆景",
+                    "detail":data[i].detail,
                 		})
                 }
                  
@@ -112,7 +134,73 @@ export default {
 		//点击添加商品
 		addProduct(){
 			this.$router.push({path:'/mg/Home/addproduct'})
-		}
+		},
+    //删除
+    handleDelete(index,row){
+        var r=confirm("确认删除本条信息吗？")
+        if(r){
+        var _this=this
+      this.$http.post(IP+'/bonsai/goods/delete',
+      {
+          'ids':[row.productId]
+      },
+      {
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+                alert(response.body.message)
+                _this.tableData.splice(index,1) 
+           }  
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+        }
+    },
+    //修改商品
+    handleEdit(index, row) {
+         var r=confirm("确认修改该商品吗？")
+        if(r){
+        var _this=this
+      this.$http.post(IP+'/bonsai/goods/update',
+      {
+          'id':row.productId,
+          'goodsname':row.productName,
+          'detail':row.detail,
+          'price':row.productPrice,
+          'pictures':row.pictures,
+          'storage':row.productstora,
+          'soldnumber':row.productSell,
+          'userId':_this.$store.state.currentdata.UserId,
+          'type':row.productType,
+      },
+      {
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+                alert(response.body.message)
+                $(".tb-edit .current-row .cell span").css({
+                  display: 'block',
+                })
+                $(".tb-edit .current-row .el-input").css({
+                  display: 'none',
+                });
+               
+           }  
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+        }
+    },
 	}
 	
 }
@@ -154,5 +242,17 @@ section.content-wrap{
 	height: 600px;
 	margin: 0 auto;
 	text-align: center;
+}
+.tb-edit .el-input {
+    display: none
+}
+.tb-edit .current-row .el-input {
+    display: block
+}
+.tb-edit .current-row .el-input+span {
+    display: none
+}
+.tb-edit .current-row .el-input {
+  color: #000;
 }
 </style>

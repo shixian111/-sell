@@ -1,3 +1,4 @@
+<!-- 暂时不用 -->
 <template>
 	<section class="content-wrap">
 
@@ -79,7 +80,7 @@ export default {
 				address: this.address,
 				phone: this.phone
 			}
-			console.log(user);
+		
 			
 		}
 			

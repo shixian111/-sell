@@ -74,7 +74,8 @@ data(){
         username:'',//用户名
         password:'',//密码
         repassword:'',//再次确认密码
-        phone:'',//电话号码
+        mobile:'',//电话号码
+        
         email:'',//邮箱
         ErrorTip:'',//错误提示
         registxt:'立即注册',//注册的提示

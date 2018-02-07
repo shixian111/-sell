@@ -52,14 +52,14 @@
 
 							</h3>
 							<div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 5px;">
-								<div class="goodsItem">
-									<div class="goods_border">
-										<a href="zhiwu-53.html" target="_blank">
+								<div class="goodsItem" v-for="(item,index) in tableData" >
+									<div class="goods_border" >
+										<a  target="_blank" @click="checkDetail">
 											<img src="http://www.028huahui.cn/images/201706/thumb_img/53_thumb_G_1498613330768.jpg" alt="吊绿萝" class="goodsimg"></a>
 										<br>
 										<p>
-											<a href="" title="吊绿萝" target="_blank">吊绿萝</a>
-										</p> <font class="shop_s">￥16.00元</font>
+											<a  title="吊绿萝" target="_blank">{{item.goodsname}}</a>
+										</p> <font class="shop_s">${{item.price}}.00</font>
 										<br>
 										<a href="javascript:addToCart(53)">
 											<img src="../assets/images/product/goumai.gif"></a>
@@ -67,8 +67,8 @@
 										<a href="javascript:collect(53);">
 											<img src="../assets/images/product/shoucang.gif"></a>
 										<br>
-										已售:2405  &nbsp; 评价数:36条
-										<br>可购买数量:29</div>
+										已售:{{item.soldnumber}}  &nbsp; 评价数:36条
+										<br>可购买数量:{{item.storage}}</div>
 								</div>
 
 							</div>
@@ -77,7 +77,7 @@
 					</div>
 					<div id="pager" class="pagebar">
 						<span class="f_l " style="margin-right:10px;">
-							总计 <b>296</b>
+							总计 <b>{{recordsTotal}}</b>
 							个记录
 						</span>
 						<span class="page_now">1</span>
@@ -94,7 +94,65 @@
 
 </template>
 
-<script ></script>
+<script >
+	export default{
+		data(){
+			return{
+				    recordsTotal:'',//总记录
+					tableData:[],
+			}
+		},
+		created(){
+			this.productList()
+		},
+		methods:{
+			productList(){
+				var _this=this
+			this.$http.post(IP+'/bonsai/goods/list',
+			{
+				'pageNum':1,
+				'pageSize':12,
+				
+			},
+			{
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+                var data=response.body.data.items
+                _this.recordsTotal=response.body.data.recordsTotal
+                for (var i = 0; i < data.length; i++) {
+                	_this.tableData.push({
+                		'goodsname':data[i].goodsname,
+                		'price':data[i].price,
+                		'type':data[i].type,
+                		'storage':data[i].storage,
+                		'soldnumber':data[i].soldnumber,
+                		'id':data[i].id,//这个商品的id
+                		'pictures':data[i].pictures,
+                		'userid':data[i].userid,//卖家的id
+                		})
+
+                }
+                 
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+			},
+			//查看详情
+		checkDetail(){
+           this.$router.push({path:'/nav/index/detail'})
+		},
+		},
+		
+	}
+
+</script>
 <style scoped>
 	/*商品分类*/
    #category_tree{background-color:#fff; border:2px solid #488601}
@@ -132,7 +190,7 @@
        .goodsItem .goodsimg{width:180px; height:200px; border:1px solid #cdcece; margin-bottom:4px;}
 
        .goodsItem p{text-align:center; color:#3f3f3f; font-weight:normal}
-       .goodsItem p a{color:#3f3f3f; text-decoration:none;}
+       .goodsItem p a{color:#3f3f3f; width:inherit;text-decoration:none;overflow:hidden;text-overflow:ellipsis; white-space:nowrap;}
        .goodsItem p a:hover{color:#ff6600; text-decoration:none;}
        .goodsItem span{width:40px; height:40px; position:absolute;left:0px; top:0px;}
 	   .goods_cat{ padding:10px;}

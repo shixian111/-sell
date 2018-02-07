@@ -167,10 +167,16 @@ visibility:hidden;
 .cell{
   font-size: 19px;
   height:30px;
+ width: 150px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
 }
 .el-button{
   background-color: rgba(0,0,0,0);
 }
+
+
 
 
   

@@ -7,7 +7,12 @@
     <el-table-column
       prop="username"
       label="用户名"
-      width="150">
+      width="100">
+    </el-table-column>
+    <el-table-column
+      prop="password"
+      label="密码"
+      width="100">
     </el-table-column>
     <el-table-column
       prop="cname"
@@ -22,7 +27,7 @@
     <el-table-column
       prop="mobile"
       label="电话号码"
-      width="150">
+      width="100">
     </el-table-column>
     <el-table-column
       prop="address"
@@ -84,7 +89,8 @@ export default {
                 var data=response.body.data.items
                 for (var i = 0; i < data.length; i++) {
                 	_this.tableData.push({
-                		"username":data[i].username||"暂无",
+                    "username":data[i].username||"暂无",
+                		"password":data[i].password||"暂无",
                 		"cname":data[i].cnname||"暂无",
                 		"flagrole":data[i].flagrole||"暂无",
                 		"mobile":data[i].mobile||"暂无",

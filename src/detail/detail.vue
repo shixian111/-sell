@@ -22,69 +22,18 @@
 
 						<div id="category_tree">
 							<div class="tit">商品分类</div>
+							
 							<dl>
 								<dt>
-									<a href="category-4-b0.html">大型室内花卉植物</a>
+									<a >小型室内植物</a>
 								</dt>
 								<dd></dd>
 							</dl>
+							
+							
 							<dl>
 								<dt>
-									<a href="category-10-b0.html">小型室内植物</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-7-b0.html">微型室内植物</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-11-b0.html">室内花卉</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-50-b0.html">自动浇水花盆</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-3-b0.html">水培室内植物</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-14-b0.html">时令草花</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-26-b0.html">种子</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-24-b0.html">年宵花</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-49-b0.html">植物组合</a>
-								</dt>
-								<dd></dd>
-							</dl>
-							<dl>
-								<dt>
-									<a href="category-52-b0.html">多肉植物</a>
+									<a >吸甲醛的盆景植物</a>
 								</dt>
 								<dd></dd>
 							</dl>
@@ -256,16 +205,16 @@
 									</ul>
 								</form>
 							</div>
-							<div class="blank"></div>
-							<div class="blank"></div>
-							<div class="box">
+							<!-- <div class="blank"></div>
+							<div class="blank"></div> -->
+							<!-- <div class="box">
 								<div id="com_b" class="history clearfix">
 									<h2 style="cursor: pointer;">商品描述：</h2>
 									<h2 class="h2bg" style="cursor: pointer;">商品属性</h2>
 									<h2 class="h2bg" style="cursor: pointer;">用户评论</h2>
 								</div>
 
-								<!-- 产品的详细信息  -->
+								<!-- 产品的详细信息  
 								<div id="com_v" class="boxCenterList RelaArticle">
 									<p>
 										<img alt="" width="850" height="182" src="../assets/images/product/11(3).jpg"></p>
@@ -369,7 +318,7 @@
 									
 									
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 					</div>
@@ -427,7 +376,7 @@ components:{
    #goodsInfo .gallery li img{width:46px; height:46px; display:block;}
   .textInfo ul strong{ font-weight:normal}
    /*文字信息*/
-   #goodsInfo .textInfo{background:#fff; width:393px; float:left; padding:0 10px; }
+   #goodsInfo .textInfo{background:#fff; width:493px; float:left; padding:0 50px; }
    #goodsInfo .textInfo ul{border-top:1px solid #ccc;}
    #goodsInfo .textInfo li{ padding:0px 8px; _height:1%;}
    #goodsInfo .textInfo li.padd{

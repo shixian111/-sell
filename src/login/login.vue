@@ -96,7 +96,7 @@ methods:{
                 this.$store.commit('setRole', flagrole)
                 this.$store.commit('setuserid', userid)
                 
-                console.log(this.$store.state.currentdata.UserId)
+               // console.log(this.$store.state.currentdata.UserId)
                 if (flagrole=="buyer") {this.$router.push({path:'/nav/index'})}
                 else if (flagrole=="seller") {this.$router.push({path:'/mg/Home'})}
                 else if (flagrole=="admin") {this.$router.push({path:'/mg/Home'})}

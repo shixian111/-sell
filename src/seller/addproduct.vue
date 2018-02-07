@@ -1,5 +1,6 @@
 <template>
 	<section class="content-wrap">
+    <span class="comments-button gv" @click="Toback">返回</span>
     <div class="leftimg">
        <img src="../assets/images/seller/addimg.png">
     </div>
@@ -8,7 +9,10 @@
     <div><span>商品描述:</span><input v-model="detail"/></div>
     <div><span>商品价格:</span><input v-model="price"/></div>
     <div><span>商品库存:</span><input v-model="storage"/></div>
-    <div><span>商品类别:</span><input v-model="type"/></div>	
+    <div> <form action="" method="get">
+                            <label id="small"><input name="zuce" type="radio" value="小型室内植物"/>小型室内植物</label>
+                            <label><input name="zuce" type="radio" value="吸甲醛的盆景植物" id="seller"/>吸甲醛的盆景植物</label></form>
+                       </div>	
     <span class="comments-button gv" @click="addProduct">添加商品</span>
   </div>
     
@@ -26,11 +30,24 @@
       detail:'',
       price:'',
       storage:'',
-      type:'',
+      type:'',//0代表小型室内植物，默认为0，1代表吸甲醛的盆景
     }
        
   },
+  updated(){
+  var _this=this
+    if ($('#small input')[0].checked) {
+        _this.type="0"
+    }
+    else{
+       _this.type="1"
+    }
+    
+},
   methods:{
+    Toback(){
+      this.$router.go(-1)
+    },
     addProduct(){
       var _this=this
       this.$http.post(IP+'/bonsai/goods/add',
@@ -39,10 +56,9 @@
         'detail':_this.detail,
         'price':_this.price,
         'pictures':'https://192.23.34.123/images/12.png',
-        
         'storage':_this.storage,
         'soldnumber':'33',
-        'userid':this.$store.state.currentdata.UserId,
+        'userid':_this.$store.state.currentdata.UserId,
         'type':_this.type,
       },
       {
@@ -53,7 +69,9 @@
             }).then((response)=>{
           
             if (response.body.code == '00') {
-                alert("message")
+                alert(response.body.message)
+                console.log(_this.type)
+                
                 }
                else if(response.body.code == '11')  
                {
@@ -75,11 +93,15 @@
 
 <style scoped>
 .leftimg{
-  margin-top:89px;
+  margin-top:117px;
   float: left;
 }
+.leftimg img{
+  width:300px;
+  height:300px;
+}
 .rightinfo{
-  margin-left: 30px;
+  margin-left: 90px;
   margin-top:139px;
   float: left;
 }
