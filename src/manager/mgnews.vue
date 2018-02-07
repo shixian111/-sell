@@ -59,7 +59,7 @@ export default {
           
             if (response.body.code == '00') {
                 var data=response.body.data.items
-                console.log(data)
+                
                 for (var i = 0; i < data.length; i++) {
                 	_this.tableData.push({
                     "newsId":data[i].id||"暂无",
@@ -76,14 +76,13 @@ export default {
 		//删除某条新闻
 	     handleDelete(index,row) {
 	     	var _this=this
-       console.log(index)
-       console.log(_this.tableData[index])
+       
         var r=confirm("您确定要删除吗？")
         if (r) {
         
 			this.$http.post(IP+'/bonsai/news/delete',
 			{
-				"ids":[row.id]
+				"ids":[row.newsId]
 			},
 			{
           'headers': {
@@ -93,7 +92,9 @@ export default {
             }).then((response)=>{
           
             if (response.body.code == '00') {
+              
                 alert("恭喜您,删除成功")
+
                _this.tableData.splice(index,1)
             }
         })
