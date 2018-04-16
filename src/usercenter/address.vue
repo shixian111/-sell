@@ -12,10 +12,10 @@
      
                         <form action="user.php" method="post" name="theForm" onsubmit="return checkConsignee(this)">
               <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
-                <tbody><tr>
-                  <td align="right" bgcolor="#ffffff">配送区域：</td>
-                  <td colspan="3" align="left" bgcolor="#ffffff"><input type="hidden" name="country" id="selCountries_0" value="1">
-                    <select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')">
+                <tbody><!-- <tr>
+                  <td align="right" bgcolor="#ffffff">收货人姓名：</td>
+                  <td colspan="3" align="left" bgcolor="#ffffff"><input type="hidden" name="country" id="selCountries_0" value="1"> -->
+                   <!--  <select name="province" id="selProvinces_0" >
                       <option value="0">请选择省</option>
                                             <option value="2">北京</option>
                                             <option value="3">安徽</option>
@@ -51,8 +51,8 @@
                                             <option value="33">香港</option>
                                             <option value="34">澳门</option>
                                             <option value="35">台湾</option>
-                                          </select>
-                    <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')">
+                                          </select> -->
+                   <!--  <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')">
                       <option value="0">请选择市</option>
                                             <option value="322" selected="">成都</option>
                                             <option value="323">绵阳</option>
@@ -98,34 +98,35 @@
                                             <option value="3672">青白江区</option>
                                             <option value="3696">高新西区</option>
                                             <option value="3702">郫县</option>
-                       </select>
+                       </select> -->
                     
-<select name="street" id="selStreet_0">
+<!-- <select name="street" id="selStreet_0">
                   <option value="0">请选择街道</option>
-                  </select>
-                  (必填) </td>
-                </tr>
+                  </select> -->
+                 <!--  (必填) </td>
+                </tr> -->
                 <tr>
                   <td align="right" bgcolor="#ffffff">收货人姓名：</td>
                   <td align="left" bgcolor="#ffffff"><input name="consignee" type="text" class="inputBg" id="consignee_0" value="">
                   (必填) </td>
-                  <td align="right" bgcolor="#ffffff">电子邮件地址：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_0" value="0">
-                  (必填)</td>
+                  <!-- <td align="right" bgcolor="#ffffff">电子邮件地址：</td>
+                  <td align="left" bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_0" value="">
+                  (必填)</td> -->
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">详细地址：</td>
                   <td align="left" bgcolor="#ffffff"><input name="address" type="text" class="inputBg" id="address_0" value="">
                   (必填)</td>
-                  <td align="right" bgcolor="#ffffff">邮政编码：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_0" value=""></td>
+                 <!--  <td align="right" bgcolor="#ffffff">邮政编码：</td>
+                  <td align="left" bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_0" value=""></td> -->
                 </tr>
                 <tr>
-                  <td align="right" bgcolor="#ffffff">电话：</td>
+                  <!-- <td align="right" bgcolor="#ffffff">电话：</td>
                   <td align="left" bgcolor="#ffffff"><input name="tel" type="text" class="inputBg" id="tel_0" value="">
-                  (必填)</td>
+                  (必填)</td> -->
                   <td align="right" bgcolor="#ffffff">手机：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_0" value=""></td>
+                  <td align="left" bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_0" value="">
+                  (必填)</td>
                 </tr>
                
                 <tr>

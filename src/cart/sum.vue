@@ -15,132 +15,41 @@
 <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
     
   <tbody><tr>
-    <td bgcolor="#ffffff">配送区域:</td>
+    <td bgcolor="#ffffff">配送地址:</td>
     <td colspan="3" bgcolor="#ffffff">
-       <input type="hidden" name="country" id="selCountries_0" value="1">
-     
-      <select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')" style="border:1px solid #ccc;">
-        <option value="0">请选择省</option>
-                <option value="2">北京</option>
-                <option value="3">安徽</option>
-                <option value="4">福建</option>
-                <option value="5">甘肃</option>
-                <option value="6">广东</option>
-                <option value="7">广西</option>
-                <option value="8">贵州</option>
-                <option value="9">海南</option>
-                <option value="10">河北</option>
-                <option value="11">河南</option>
-                <option value="12">黑龙江</option>
-                <option value="13">湖北</option>
-                <option value="14">湖南</option>
-                <option value="15">吉林</option>
-                <option value="16">江苏</option>
-                <option value="17">江西</option>
-                <option value="18">辽宁</option>
-                <option value="19">内蒙古</option>
-                <option value="20">宁夏</option>
-                <option value="21">青海</option>
-                <option value="22">山东</option>
-                <option value="23">山西</option>
-                <option value="24">陕西</option>
-                <option value="25">上海</option>
-                <option value="26" selected="">四川</option>
-                <option value="27">天津</option>
-                <option value="28">西藏</option>
-                <option value="29">新疆</option>
-                <option value="30">云南</option>
-                <option value="31">浙江</option>
-                <option value="32">重庆</option>
-                <option value="33">香港</option>
-                <option value="34">澳门</option>
-                <option value="35">台湾</option>
-              </select>
-      <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')" style="border:1px solid #ccc;">
-        <option value="0">请选择市</option>
-                <option value="322" selected="">成都</option>
-                <option value="323">绵阳</option>
-                <option value="324">阿坝</option>
-                <option value="325">巴中</option>
-                <option value="326">达州</option>
-                <option value="327">德阳</option>
-                <option value="328">甘孜</option>
-                <option value="329">广安</option>
-                <option value="330">广元</option>
-                <option value="331">乐山</option>
-                <option value="332">凉山</option>
-                <option value="333">眉山</option>
-                <option value="334">南充</option>
-                <option value="335">内江</option>
-                <option value="336">攀枝花</option>
-                <option value="337">遂宁</option>
-                <option value="338">雅安</option>
-                <option value="339">宜宾</option>
-                <option value="340">资阳</option>
-                <option value="341">自贡</option>
-                <option value="342">泸州</option>
-              </select>
-      
-      <select name="district" id="selDistricts_0" onchange="region.changed(this, 4, 'selStreet_0')" style="border:1px solid #ccc;">
-        <option value="0">请选择区</option>
-                <option value="3673">锦江区</option>
-                <option value="3682">金牛区</option>
-                <option value="3668">武侯区</option>
-                <option value="3676">成华区</option>
-                <option value="3685">龙泉驿区</option>
-                <option value="3679">新都区</option>
-                <option value="3689">温江区</option>
-                <option value="3692">高新区</option>
-                <option value="3703">都江堰市</option>
-                <option value="3705">邛崃市</option>
-                <option value="3704">彭州市</option>
-                <option value="3706">金堂县</option>
-                <option value="3697">双流县</option>
-                <option value="3707">大邑县</option>
-                <option value="3708">蒲江县</option>
-                <option value="3711">新津县</option>
-                <option value="3665">青羊区</option>
-                <option value="3672">青白江区</option>
-                <option value="3696">高新西区</option>
-                <option value="3702">郫县</option>
-              </select>
-      <select name="street" id="selStreet_0">
-                  <option value="0">请选择</option>
-                        </select>
-                
-    (必填) </td>
+       <input type="text" name="country" id="selCountries_0" v-model="shipaddress">
+   (必填) </td>
   </tr>
     <tr>
     <td bgcolor="#ffffff">收货人姓名:</td>
-    <td bgcolor="#ffffff"><input name="consignee" type="text" class="inputBg" id="consignee_0" value="">
+    <td bgcolor="#ffffff"><input name="consignee" type="text" class="inputBg" id="consignee_0" v-model="username">
     (必填) </td>
     <td bgcolor="#ffffff">电子邮件地址:</td>
-    <td bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_0" value="">
+    <td bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_0" v-model="email">
     (必填)</td>
   </tr>
     
-  <tr>
+   <tr>
     <td bgcolor="#ffffff">详细地址:</td>
-    <td bgcolor="#ffffff"><input name="address" type="text" class="inputBg" id="address_0" value="">
+    <td bgcolor="#ffffff"><input name="address" type="text" class="inputBg" id="address_0" v-model="dispatchingaddress">
     (必填)</td>
     <td bgcolor="#ffffff">邮政编码:</td>
-    <td bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_0" value=""></td>
+    <td bg color="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_0" v-model="postalcode"></td>
   </tr>
     <tr>
     <td bgcolor="#ffffff">电话:</td>
-    <td bgcolor="#ffffff"><input name="tel" type="text" class="inputBg" id="tel_0" value="">
+    <td bgcolor="#ffffff"><input name="tel" type="text" class="inputBg" id="tel_0" v-model="telephone">
     (必填)</td>
     <td bgcolor="#ffffff">手机:</td>
-    <td bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_0" value=""></td>
+    <td bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_0" v-model="mobile"></td>
   </tr>
     
  
     <tr>
     <td colspan="4" align="center" bgcolor="#ffffff">
-    <input type="submit" name="Submit" class="bnt_blue_2" value="提交订单">
-            <input type="hidden" name="step" value="consignee">
-      <input type="hidden" name="act" value="checkout">
-      <input name="address_id" type="hidden" value="">
+    <input type="submit" name="Back" class="bnt_blue_1" value="返回" @click="Back">
+    <input type="submit" name="Submit" class="bnt_blue_2" value="提交订单" @click="OrderSubmit">
+            
       </td>
   </tr>
 </tbody></table>
@@ -150,14 +59,83 @@
 </template>
 
 <script scope>
+export default{
+    data() {
+        return {
+            shipaddress:'',//配送地址
+            username:'',//姓名
+            mobile:'',//手机
+            telephone:'',//电话
+            email:'',//邮箱
+            dispatchingaddress:'',//详细配送地址
+            postalcode:'',//邮编
+        }
+    },
+    created() {
+       
+    },
+    methods: {
+        Back(){
+            this.$router.go(-2)
+        },
+        OrderSubmit(){
 
+                var _this=this
+            this.$http.post(IP+'/bonsai/orders/add',
+            {   
+                sellid:_this.$route.query.sellerId,
+                buyid:this.$store.state.currentdata.UserId,
+                goodsname:_this.$route.query.goodsname, 
+                price:_this.$route.query.price,
+                describe:_this.$route.query.detail, 
+                goodsnumber:_this.$route.query.productId, 
+                pictures:"https://192.23.34.123/image/12.npg", 
+                username:_this.username, 
+                shipaddress:_this.shipaddress, 
+                mobile:_this.mobile,
+                telephone:_this.telephone,
+                email:_this.email,
+                dispatchingaddress:_this.dispatchingaddress,
+                postalcode:_this.postalcode,
+                state:0,//0表示还未发货，1表示已发货
+            },
+            {
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+            if (response.body.code==11) {
+                alert(response.body.message)
+            }
+            if (response.body.code == '00') {
+                alert("恭喜您，提交订单成功,请耐心等待发货")
+                 
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+            },
+        
+    }
+}
 
         
 </script>
-<style scope>
+<style scoped>
 .flowGoodsFittings{padding:10px;}
     .flowGoodsFittings ul{height:1%; margin:5px 4px; float:left;}
     .flowGoodsFittings li{float:left; width:120px;}
     .flowGoodsFittings li.goodsimg{width:48px; margin-right:10px;}
     .flowGoodsFittings li.goodsimg img{width:48px; height:48px; display:block;}
+    .flowBox{margin-bottom: 300px;}
+    tbody tr td{
+        font-size: 12px;
+        padding-left: 122px;
+    }
+    .bnt_blue_1,.bnt_blue_2{
+        margin-top: 30px;
+        margin-right: 30px;
+    }
 </style>

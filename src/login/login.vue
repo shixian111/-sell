@@ -21,7 +21,15 @@
                             <label class="user-label" for="password">
                                 密码
                             </label>
-                            <input v-model="password" v-on:keyup.13="login" type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
+                            <input v-model="password"  type="password" class="user-content" id="password" placeholder="请输入密码" autocomplete="off">
+                        </div>
+                        <div class="user-item">
+                             <label class="user-label">
+                                验证码
+                            </label>
+                            <input type="text" placeholder="请输入验证码" v-on:keyup.13="login" class="yanzhengma_input" @blur="checkLpicma" v-model="picLyanzhengma">
+                            <input type="button" id="code" @click="createCode" class="verification1" v-model="checkCode"/>
+
                         </div>
                         <a class="btn btn-submit" id="submit" @click="login" >{{registxt}}</a>
                         <div class="link-item">
@@ -38,6 +46,7 @@
 </template>
 
 <script scope>
+var code;//在全局定义验证码
 import headerView from '../components/header-simple.vue'
 import bottomView from '../components/bottom.vue'
 export default{
@@ -51,7 +60,12 @@ data(){
         password:'',
          ErrorTip:'',//错误提示
         registxt:'立即登录',//登录的提示
+        picLyanzhengma:'',//验证码
+        checkCode:'',//图片验证码
 	}
+},
+created(){
+    this.createCode()
 },
 updated(){
  
@@ -86,7 +100,7 @@ methods:{
         .then((response)=>{
           if (response.body.code == '00') {
 
-               if (response.body.data!=null) 
+               if (response.body.data!=null&&_this.picLyanzhengma!='') 
                {
                 alert("恭喜您，登录成功")
                 _this.registxt="登录成功"
@@ -101,6 +115,10 @@ methods:{
                 else if (flagrole=="seller") {this.$router.push({path:'/mg/Home'})}
                 else if (flagrole=="admin") {this.$router.push({path:'/mg/Home'})}
               }
+                else if(this.picLyanzhengma==''){
+                    _this.ErrorTip="验证码不能为空"
+                    _this.registxt="登录"
+                }
                 else{
                     alert("用户名或密码不存在")
                      _this.registxt="登录"
@@ -113,20 +131,65 @@ methods:{
         })
     
 },
+// 图片验证码
+createCode(){
+  code = ""; 
+  var codeLength = 4;//验证码的长度 
+  var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 
+     'S','T','U','V','W','X','Y','Z');//随机数 
+  for(var i = 0; i < codeLength; i++) {
+   //循环操作 
+   var index = Math.floor(Math.random()*36);//取得随机数的索引（0~35） 
+   code += random[index];//根据索引取得随机数加到code上 
+  } 
+  this.checkCode = code;//把code值赋给验证码 
+},
+// 失焦验证图和密码
+checkLpicma(){   
+    var _this=this
+  this.picLyanzhengma.toUpperCase();//取得输入的验证码并转化为大写   
+  if(_this.picLyanzhengma == '') {
+   //代码是直接复制项目内容，这里选择器选择时 请根据自己的需求来实现提示语效果，很简单，我懒，就不改了 ~
+   _this.ErrorTip="请输入验证码"
+   _this.registxt="登录"
+    
+  }else if(_this.picLyanzhengma.toUpperCase() != _this.checkCode ) { 
+   //若输入的验证码与产生的验证码不一致时 
+   console.log( this.picLyanzhengma.toUpperCase())
+   //代码是直接复制项目内容，这里选择器选择时 请根据自己的需求来实现提示语效果，很简单，我懒，就不改了 ~  
+   _this.ErrorTip="验证码不正确"
+   _this.registxt="登录"
+   this.createCode();//刷新验证码 
+   _this.picLyanzhengma = '';
+  }else {
+   //输入正确时 
+   //代码是直接复制项目内容，这里选择器选择时 请根据自己的需求来实现提示语效果，很简单，我懒，就不改了 ~  
+   
+   return true;
+  } 
+}
+
   }   }   
 </script>
 <style scoped>
  /* 最外层容器 */
 .page-wrap{
-    padding: 40px 0;
-    background: #238e68;
+    padding: 90px 0;
+    background: url('../assets/images/login/bg.jpg') no-repeat ; height:500px; width:1360px;
+   
+}
+/*填验证码的input*/
+.yanzhengma_input{
+    width:190px;
+    height:40px;
+    padding-left: 90px;
 }
 /* 表单框 */
 .user-con{
     position: relative;
     margin: 0 auto;
     width: 400px;
-    background: #fff;
+    background: rgba(255,255,255,0.8);
 }
 .user-con .user-title{
     text-align: center;
@@ -197,6 +260,6 @@ methods:{
 }
 .user-con .link-item .link{
     margin-left: 10px;
-    color: #999;
+    color: #000;
 }
 </style>

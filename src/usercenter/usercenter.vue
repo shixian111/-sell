@@ -17,7 +17,8 @@
 		<router-link  to="/nav/usercenter/MyOrder"><a href="" class="curs">我的订单</a></router-link>
 		<router-link  to="/nav/usercenter/address"><a href="">收货地址</a></router-link>
 		<router-link  to="/nav/usercenter/message"><a href="">我的留言</a></router-link>
-		<router-link  to="/nav/usercenter/comment"><a href=""> 我的评论</a></router-link>
+    <router-link  to="/nav/usercenter/comment"><a href=""> 我的评论</a></router-link>
+		<router-link  to="/nav/usercenter/userinfo"><a href=""> 我的个人信息</a></router-link>
 </div>      </div>
      </div>
     </div>

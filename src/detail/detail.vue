@@ -8,11 +8,11 @@
 					<div id="ur_here">
 						当前位置:
 						<code></code>
-						<a href="category-1-b0.html">花卉植物</a>
+						<router-link to="/nav/product"><a href="category-1-b0.html">花卉植物</a></router-link>
 						<code>&gt;</code>
-						<a href="category-4-b0.html">大型室内花卉植物</a>
+						<a >{{tableData.type==0?'小型室内盆景':'吸甲醛的花卉植物'}}</a>
 						<code>&gt;</code>
-						广东万年青
+						{{tableData.goodsname}}
 					</div>
 				</div>
 				<div class="blank"></div>
@@ -25,7 +25,7 @@
 							
 							<dl>
 								<dt>
-									<a >小型室内植物</a>
+									<a v-show="tableData.type=='小型室内盆景'||tableData.type==0">小型室内植物</a>
 								</dt>
 								<dd></dd>
 							</dl>
@@ -33,7 +33,7 @@
 							
 							<dl>
 								<dt>
-									<a >吸甲醛的盆景植物</a>
+									<a v-show="tableData.type=='吸甲醛的室内盆景'||tableData.type==1">吸甲醛的盆景植物</a>
 								</dt>
 								<dd></dd>
 							</dl>
@@ -90,7 +90,7 @@
 
 							<div class="textInfo">
 								<form action="javascript:addToCart(2)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
-									<div class="clearfix" style="font-size:14px; font-weight:bold; padding-bottom:8px;"> <font class="zhutis">广东万年青</font> <font class="keyws">万年青物如其名万年长青，叶色绿亮，生机勃勃，美观大方，还能强力吸收有害物质，是装饰植物中的佼佼者。</font>
+									<div class="clearfix" style="font-size:14px; font-weight:bold; padding-bottom:8px;"> <font class="zhutis">{{tableData.goodsname}}</font> <font class="keyws">{{tableData.detail}}</font>
 
 									</div>
 									<ul>
@@ -98,29 +98,29 @@
 										<br>
 
 										<div class="paojia2"> <strong>价格：</strong>
-											<font id="ECS_GOODS_AMOUNT" class="shop">￥48.00元</font>
+											<font id="ECS_GOODS_AMOUNT" class="shop">￥{{tableData.price}}元</font>
 											&nbsp;&nbsp;&nbsp;&nbsp; <strong>可购买：</strong>
-											908 株
+											{{tableData.storage}} 株
 										</div>
 
 										<div class="lanmug">
-											<strong>人气：</strong>
+											<!-- <strong>人气：</strong>
 											已有
 											<font class="renc">11811</font>
-											人关注  &nbsp;&nbsp;&nbsp; 已售出
-											<font class="renc">174</font>
+											人关注 -->  &nbsp;&nbsp;&nbsp; 已售出
+											<font class="renc">{{tableData.soldnumber}}</font>
 											株
 											<br>
 											<table width="350" border="0" cellspacing="0" cellpadding="0">
 												<tbody>
 													<tr>
 														<td>
-															<strong>用户评价：</strong>
+															<!-- <strong>用户评价：</strong>
 															<img src="../assets/images/product/stars5.gif" alt="comment rank 5">
 															已有
 															<font class="renc">23</font>
-															人评价
-															<br>
+															人评价 -->
+															<!-- <br> -->
 															在线咨询：
 															<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3141380432&amp;site=qq&amp;menu=yes">
 																<img border="0" src="http://wpa.qq.com/pa?p=2:3141380432:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
@@ -135,11 +135,12 @@
 										</div>
 
 										<div class="lanmug">
-											<strong>我要买：</strong>
-											<input name="number" type="text" id="number" value="1" size="2" onblur="changePrice()" style="border:1px solid #ccc; ">
-											株   &nbsp;&nbsp;
-											<strong>购买此商品可使用：</strong>
-											<font class="f4">0 积分</font>
+											<!-- <strong>我要买：</strong> -->
+											<!-- <input name="number" type="text" id="number" value="1" size="2" onblur="changePrice()" style="border:1px solid #ccc; "> -->
+											<buy-num @edit-num="editNum" :limit="Number(tableData.storage)"></buy-num>
+											<!-- 株   &nbsp;&nbsp; -->
+											<!-- <strong>购买此商品可使用：</strong>
+											<font class="f4">0 积分</font> -->
 										</div>
 
 										<div class="propertySelect pd_b_10 clearfix" id="propertySelect">
@@ -151,7 +152,7 @@
 													</p>
 													<input style="display:none" id="spec_value_584" type="radio" name="spec_22" value="584" checked=""></a>
 
-												<a class="" href="javascript:;" title="孔雀蓝花盆（小）" style="cursor:pointer" name="spec_a_2445" attr_gallery_id="" onclick="changeAtt(this,2445,22,'')">
+												<!-- <a class="" href="javascript:;" title="孔雀蓝花盆（小）" style="cursor:pointer" name="spec_a_2445" attr_gallery_id="" onclick="changeAtt(this,2445,22,'')">
 													<p> <em>孔雀蓝花盆（小）</em> <i></i>
 													</p>
 													<input style="display:none" id="spec_value_2445" type="radio" name="spec_22" value="2445"></a>
@@ -168,7 +169,7 @@
 														<em>梯形盆（中）</em>
 														<i></i>
 													</p>
-													<input style="display:none" id="spec_value_807" type="radio" name="spec_22" value="807"></a>
+													<input style="display:none" id="spec_value_807" type="radio" name="spec_22" value="807"></a> -->
 												<input type="hidden" name="spec_list" value="3"></div>
 											<div class="" style="clear:both"></div>
 										</div>
@@ -183,12 +184,12 @@
 													</p>
 													<input style="display:none" id="spec_value_2474" type="radio" name="spec_26" value="2474" checked=""></a>
 
-												<a class="" href="javascript:;" title="约0.9-1.1米" style="cursor:pointer" name="spec_a_2473" attr_gallery_id="" onclick="changeAtt(this,2473,26,'')">
+												<!-- <a class="" href="javascript:;" title="约0.9-1.1米" style="cursor:pointer" name="spec_a_2473" attr_gallery_id="" onclick="changeAtt(this,2473,26,'')">
 													<p>
 														<em>约0.9-1.1米</em>
 														<i></i>
 													</p>
-													<input style="display:none" id="spec_value_2473" type="radio" name="spec_26" value="2473"></a>
+													<input style="display:none" id="spec_value_2473" type="radio" name="spec_26" value="2473"></a> -->
 												<input type="hidden" name="spec_list" value="1"></div>
 											<div class="" style="clear:both"></div>
 										</div>
@@ -198,7 +199,8 @@
 										</li>
 										<br>
 										<a href="#">
-											<img src="../assets/images/product/goumai2.gif"></a>
+											<img src="../assets/images/product/goumai2.gif" @click="buyNow(tableData.id,tableData.userid,tableData.goodsname,
+											tableData.price,tableData.detail,productNum)"></a>
 										<a href="#">
 											<img src="../assets/images/product/shoucang2.gif"></a>
 
@@ -334,11 +336,55 @@
 </template>
 
 <script scope>
-
+ import BuyNum from '../components/buynum'
 export default{
-components:{
-
-}
+		data() {
+		return {
+			tableData: [],//存放所有的盆景的详细信息
+			productNum:'1',//当前购买数量，默认为1
+		}
+	},
+	components: {
+      BuyNum
+    },
+created() {
+		this.ProductList()
+	},
+	methods: {
+		ProductList() {
+			var _this=this
+			this.$http.get(IP+'/bonsai/goods/get/'+_this.$route.query.productId,
+			
+			{
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+            	var data=response.body.data
+              
+                 	_this.tableData=data
+             // console.log(_this.tableData)
+                 
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+        
+	        },
+	        //立刻购买
+	        buyNow(productId,sellerId,goodsname,price,detail,productNum){
+	        	this.$router.push({path:'/nav/cart/sum',query: {productId,sellerId,goodsname,price,detail,productNum}})
+	        },
+ //编辑盆景购买的数量
+	    editNum (num) {
+        this.productNum = num
+      }
+	    },
+	   
 }
 
         
@@ -435,4 +481,8 @@ components:{
 #com_v{line-height: 1.5;}
 #com_v p span{line-height:1.5;}
 .boxCenterList{padding:8px;}
+.item-cols-num{
+	border:0;
+	padding-top: 12px;
+}
 </style>

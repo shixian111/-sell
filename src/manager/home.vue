@@ -37,6 +37,7 @@ export default {
 			],
 			sellerSidebar:[
 				{content:'商品管理',url: '/mg/Home/mgproduct'},
+				{content:'订单管理',url: '/mg/Home/mgorder'},
 			]
 		}
 	},

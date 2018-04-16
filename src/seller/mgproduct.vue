@@ -11,7 +11,7 @@
       prop="productId"
       label="商品id"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productId" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productId}}</span>
       </template>
     </el-table-column>
@@ -19,7 +19,7 @@
       prop="productName"
       label="商品名"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productName" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productName}}</span>
       </template>
     </el-table-column>
@@ -28,7 +28,7 @@
       prop="productstora"
       label="商品库存"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productstora" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productstora}}</span>
       </template>
     </el-table-column>
@@ -36,7 +36,7 @@
       prop="productPrice"
       label="商品价格"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productPrice" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productPrice}}</span>
       </template>
     </el-table-column>
@@ -44,7 +44,7 @@
       prop="productPic"
       label="商品图片"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productPic" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productPic}}</span>
       </template>
     </el-table-column>
@@ -52,7 +52,7 @@
       prop="productSell"
       label="商品销量"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productSell" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productSell}}</span>
       </template>
     </el-table-column>
@@ -60,7 +60,7 @@
       prop="productType"
       label="商品类别"
       width="160">
-      <template scope="scope">
+      <template  slot-scope="scope">
                     <el-input size="small" v-model="scope.row.productType" placeholder="请输入内容" @change="handleEdit(scope.$index, scope.row)"></el-input> <span>{{scope.row.productType}}</span>
       </template>
     </el-table-column>
@@ -85,7 +85,7 @@ export default {
 	
 	data() {
 		return {
-			tableData: [],
+			tableData:[],
 		}
 			 
 	},

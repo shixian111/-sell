@@ -2,7 +2,7 @@
 * @Author: 12231
 * @Date:   2018-02-02 18:06:47
 * @Last Modified by:   shixian111
-* @Last Modified time: 2018-02-05 21:06:16
+* @Last Modified time: 2018-04-15 10:36:38
 */
 
 import Vue from 'vue'
@@ -12,6 +12,8 @@ Vue.use(Vuex)
 
 const state = {
   setNewsID:'',//设置新闻的id
+  soldnumber:0,
+  storage:0,
   currentdata: {
     get UserId() {
       return window.sessionStorage.getItem('userid')

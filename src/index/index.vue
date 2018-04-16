@@ -4,7 +4,7 @@
 	
 	<!-- 图片的导航********************************************************************************-->
 			<section class="img_nav clearfix">
-
+        <router-link to="/nav/product">
 				<div class="img_banner">
 					<swiper :options="swiperOption" ref="mySwiperA" style="position:relative">
 					<swiper-slide  style="height:496px;float:left;"><span id="banner_1" ><a href="#"><img src="../assets/images/index/slide1.jpg" alt=""></a></span></swiper-slide>
@@ -13,7 +13,7 @@
 					<swiper-slide  style="height:496px;float:left;"><span id="banner_4" ><a href="#"><img src="../assets/images/index/slide4.jpg" alt=""></a></span></swiper-slide>	
 				    </swiper>	
 				</div>
-				
+				</router-link>
 			</section>
 			
 
@@ -29,19 +29,13 @@
 								<a href="#">天堂鸟资讯</a>
 							</div>
 							<div class="NewsList tc" style="border-top:none">
-								<ul style="padding-left: 2px;">
+                <router-link to="/nav/news">
+								<ul style="padding-left: 2px;" v-for="(item,index) in newsData">
 									<li>
-										<a href="#" title="薰衣草的习性管理" style="font-family: MicrosoftYaHei;">薰衣草的习性管理</a>
-										<li>
-											<a href="#" title="捕虫堇的生长习性及管理" style="font-family: MicrosoftYaHei;">捕虫堇的生长习性及管理</a>
-										</li>
-										<li>
-											<a href="#" title="天竺葵为什么会有不同的花色变化" style="font-family: MicrosoftYaHei;">天竺葵为什么会有不同的花色变化</a>
-										</li>
-										<li>
-											<a href="#" title="植物水培的通用插法" style="font-family: MicrosoftYaHei;">植物水培的通用插法</a>
+										<a href="#" title="薰衣草的习性管理" style="font-family: MicrosoftYaHei;">{{item.newsTitle}}</a>
 										</li>
 									</ul>
+                  </router-link>
 								</div>
 							</div>
 							<div class="news_right">
@@ -61,20 +55,20 @@
 						</div>
 					</div>
 					<div id="show_best_area" class="clearfix">
-						<div class="goodsItem">
+						<div class="goodsItem" v-for="(item,index) in productData" v-show="item.type==1" >
 							<div class="goods_border">
-								<a href="#" target="_blank">
-									<img src="../assets/images/product/xjq1.jpg" alt="常春藤" class="goodsimg"></a>
+								<a  @click="checkDetail(item.id,item.userid)">
+									<img src="../assets/images/product/xjq1.jpg" :alt="item.goodsname" class="goodsimg"></a>
 								<br>
 								<p class="f1">
-									<a href="#" title="常春藤" target="_blank">常春藤</a>
-								</p> <font class="market">市场价：￥19.20元</font>
+									<a href="#" title="常春藤" target="_blank">{{item.goodsname}}</a>
+								</p> <font class="market">市场价：￥{{item.price+0}}元</font>
 								<br>
 
-								<font class="f1">本店价：￥16.00元</font>
-								<br>已售:205 &nbsp; 评价数:29条</div>
+								<font class="f1">本店价：￥{{item.price}}元</font>
+								<br>已售:{{item.soldnumber}} &nbsp; 评价数:29条</div>
 						</div>
-						<div class="goodsItem">
+						<!-- <div class="goodsItem">
 							<div class="goods_border">
 								<a href="#" target="_blank">
 									<img src="../assets/images/product/xjq2.jpg" alt="吊绿萝" class="goodsimg"></a>
@@ -88,8 +82,8 @@
 
 								<font class="f1">本店价：￥15.00元</font>
 								<br>已售:2204 &nbsp; 评价数:34条</div>
-						</div>
-						<div class="goodsItem">
+						</div> -->
+						<!-- <div class="goodsItem">
 							<div class="goods_border">
 								<a href="#" target="_blank">
 									<img src="../assets/images/product/xjq3.jpg" alt="虎尾兰" class="goodsimg"></a>
@@ -103,8 +97,8 @@
 
 								<font class="f1">本店价：￥12.00元</font>
 								<br>已售:149 &nbsp; 评价数:15条</div>
-						</div>
-						<div class="goodsItem">
+						</div> -->
+						<!-- <div class="goodsItem">
 							<div class="goods_border">
 								<a href="#" target="_blank">
 									<img src="../assets/images/product/xjq4.jpg" alt="芦荟" class="goodsimg"></a>
@@ -118,8 +112,8 @@
 
 								<font class="f1">本店价：￥15.00元</font>
 								<br>已售:124 &nbsp; 评价数:18条</div>
-						</div>
-						<div class="goodsItem">
+						</div> -->
+						<!-- <div class="goodsItem">
 							<div class="goods_border">
 								<a href="#" target="_blank">
 									<img src="../assets/images/product/xjq5.jpg" alt="绿萝" class="goodsimg"></a>
@@ -133,7 +127,7 @@
 
 								<font class="f1">本店价：￥118.00元</font>
 								<br>已售:357 &nbsp; 评价数:31条</div>
-						</div>
+						</div> -->
 
 					</div>
 				</div>
@@ -145,18 +139,18 @@
   <h3 style="position:relative"><img style="position:absolute; left:0px; top:8px;" src="../assets/images/index/biao2.gif"> <span><a href="#" style="font-size:14px; font-weight:bold">小型室内植物</a></span></h3>
     <div class="goods_cat">
     <div class="clearfix goodsBox" style="border:1px solid #dedede;width:1100px">
-           <router-link  to="/nav/index/detail"> <div class="goodsItem ">
+           <div class="goodsItem" v-for="(item,index) in productData" v-show="item.type==0"  >
 	     <div class="goods_border">
-           <a href="#" target="_blank"><img src="../assets/images/product/small1.jpg" alt="自动浇水花盆植物组合盆栽" class="goodsimg"></a><br>
-           <p><a href="#" title="自动浇水花盆植物组合盆栽" target="_blank">自动浇水花盆植物组合盆栽</a></p>
-		    <font class="market">市场价：￥20.40元</font><br>
-                     本店价：<font class="shop_s">￥17.00元</font>
+           <a  @click="checkDetail(item.id,item.userid)"><img src="../assets/images/product/small1.jpg" :alt="item.goodsname" class="goodsimg"></a><br>
+           <p><a href="#" :title="item.goodsname" target="_blank">{{item.goodsname}}</a></p>
+		    <font class="market">市场价：￥{{item.price+0}}元</font><br>
+                     本店价：<font class="shop_s">￥{{item.price}}元</font>
           <br>
 		  
-		  已售:12 &nbsp; 评价数:1条<br>
+		  已售:{{item.soldnumber}} &nbsp; 评价数:1条<br>
 		  </div>
-        </div></router-link>
-            <div class="goodsItem ">
+        </div>
+           <!--  <div class="goodsItem ">
 	     <div class="goods_border">
            <a href="#" target="_blank"><img src="../assets/images/product/small2.jpg" alt="花叶蔓长春" class="goodsimg"></a><br>
            <p><a href="#" title="花叶蔓长春" target="_blank">花叶蔓长春</a></p>
@@ -166,8 +160,8 @@
 		  
 		  已售:11 &nbsp; 评价数:1条<br>
 		  </div>
-        </div>
-            <div class="goodsItem ">
+        </div> -->
+           <!--  <div class="goodsItem ">
 	     <div class="goods_border">
            <a href="#" target="_blank"><img src="../assets/images/product/small3.jpg" alt="米兰" class="goodsimg"></a><br>
            <p><a href="#" title="米兰" target="_blank">米兰</a></p>
@@ -177,8 +171,8 @@
 		  
 		  已售:49 &nbsp; 评价数:6条<br>
 		  </div>
-        </div>
-            <div class="goodsItem ">
+        </div> -->
+           <!--  <div class="goodsItem ">
 	     <div class="goods_border">
            <a href="#" target="_blank"><img src="../assets/images/product/small4.jpg" alt="小型吊绿萝" class="goodsimg"></a><br>
            <p><a href="#" title="小型吊绿萝" target="_blank">小型吊绿萝</a></p>
@@ -188,8 +182,8 @@
 		  
 		  已售:138 &nbsp; 评价数:8条<br>
 		  </div>
-        </div>
-            <div class="goodsItem ">
+        </div> -->
+           <!--  <div class="goodsItem ">
 	     <div class="goods_border">
            <a href="#" target="_blank"><img src="../assets/images/product/small5.jpg" alt="彩叶草" class="goodsimg"></a><br>
            <p><a href="#" title="彩叶草" target="_blank">彩叶草</a></p>
@@ -199,7 +193,7 @@
 		  
 		  已售:57 &nbsp; 评价数:6条<br>
 		  </div>
-        </div>
+        </div> -->
           </div>
     </div>
  </div>
@@ -308,10 +302,19 @@ data(){
           loop:true,
         	effect :'fade',
         	slidesPerGroup:1,
-      }
-
+      },
+      page:'1',//默认获取第一页数据
+     newsData:[],
+     productData:[],
 	}
 },
+ // props: {
+ // newsData:{
+ //  type:Array,
+ //  required:true,
+ // }},//把新闻组件传过来
+       
+   
 computed: {
     swiper() {
      return this.$refs.mySwiperA.swiper
@@ -330,8 +333,82 @@ computed: {
    beforeDestroy(){
    		window.clearTimeout(timer);
    },
-methods:{
-    
+created() {
+    this.newsList(),//新闻列表
+    this.productList()//商品列表
+
+  },
+  methods:{
+    newsList() {
+      var _this=this
+      this.$http.get(IP+'/bonsai/news/list/'+_this.page+'/4',
+      
+      {
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+                var data=response.body.data.items
+                
+                for (var i = 0; i < data.length; i++) {
+                  _this.newsData.push({
+                        "newsId":data[i].id,
+                    "newsTitle":data[i].newstitle,
+                    "newstime":data[i].newtime,
+                    })
+                }
+                 
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+    }, 
+    productList(){
+        var _this=this
+      this.$http.post(IP+'/bonsai/goods/list',
+      {
+        'pageNum':1,
+        'pageSize':10,
+        
+      },
+      {
+          'headers': {
+            'Content-Type': 'application/json',
+            },
+            
+            }).then((response)=>{
+          
+            if (response.body.code == '00') {
+                var data=response.body.data.items
+                console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                  _this.productData.push({
+                    'goodsname':data[i].goodsname,
+                    'price':data[i].price,
+                    'type':data[i].type,
+                    'storage':data[i].storage,
+                    'soldnumber':data[i].soldnumber,
+                    'id':data[i].id,//这个商品的id
+                    'pictures':data[i].pictures,
+                    'userid':data[i].userid,//卖家的id
+                    })
+                }      
+            }
+        })
+        .catch(function(){
+          alert("出错啦")
+        })
+      }, 
+      //查看详情
+    checkDetail(productId,sellerId){
+      
+           this.$router.push({path:'/nav/index/detail',query: {productId,sellerId}})
+           // this.$route.params.productId  this.$route.params.sellerId
+    },
 },
 components:{
 	 swiper,

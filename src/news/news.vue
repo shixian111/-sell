@@ -86,13 +86,17 @@
 					</div>
 				</div>
 			</div>
-
+<!-- <IndexComponent :newsData="tableData"></IndexComponent> -->
 </div>
+
 </template>
 
 <script >
+// import IndexComponent from '../index/index.vue'
 export default {
-	
+	// components:{
+	// 	IndexComponent
+	// },
 	data() {
 		return {
 			tableData: [],

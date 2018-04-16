@@ -27,7 +27,7 @@
 				<!-- 搜索框 -->
 				<form class="searchForm" >
 					<input name="keywords" type="text" class="keyword" value=""/>
-					<input name="imageField" type="submit" value="搜索" class="go">
+					<input name="imageField" type="submit" value="搜索" class="go"/>
 				</form>
 				
 				<!-- 右边联系电话 -->
@@ -66,7 +66,9 @@ export default{
 			$('.logo_nav').css('position','relative').css('width','1100px')
 			$('.searchForm').css('padding-left','330px')
 		}
-		}
+		},
+		//搜索功能
+		
 	},
 }
 

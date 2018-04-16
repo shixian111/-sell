@@ -10,8 +10,8 @@
     <div><span>商品价格:</span><input v-model="price"/></div>
     <div><span>商品库存:</span><input v-model="storage"/></div>
     <div> <form action="" method="get">
-                            <label id="small"><input name="zuce" type="radio" value="小型室内植物"/>小型室内植物</label>
-                            <label><input name="zuce" type="radio" value="吸甲醛的盆景植物" id="seller"/>吸甲醛的盆景植物</label></form>
+                            <label><input name="zuce" type="radio" v-model="type" value="0"/>小型室内植物</label>
+                            <label><input name="zuce" type="radio" v-model="type" value="1" />吸甲醛的盆景植物</label></form>
                        </div>	
     <span class="comments-button gv" @click="addProduct">添加商品</span>
   </div>
@@ -30,26 +30,17 @@
       detail:'',
       price:'',
       storage:'',
-      type:'',//0代表小型室内植物，默认为0，1代表吸甲醛的盆景
+      type:'0',//0代表小型室内植物，默认为0，1代表吸甲醛的盆景
     }
-       
   },
-  updated(){
-  var _this=this
-    if ($('#small input')[0].checked) {
-        _this.type="0"
-    }
-    else{
-       _this.type="1"
-    }
-    
-},
+  
   methods:{
     Toback(){
       this.$router.go(-1)
     },
     addProduct(){
-      var _this=this
+      var _this=this 
+     // console.log(_this.type)
       this.$http.post(IP+'/bonsai/goods/add',
       {
         'goodsname':_this.goodsname,
@@ -59,7 +50,7 @@
         'storage':_this.storage,
         'soldnumber':'33',
         'userid':_this.$store.state.currentdata.UserId,
-        'type':_this.type,
+        'type':_this.type,//0代表小型室内盆景植物，1代表吸甲醛的盆景植物
       },
       {
           'headers': {
@@ -70,14 +61,17 @@
           
             if (response.body.code == '00') {
                 alert(response.body.message)
-                console.log(_this.type)
+               
                 
                 }
                else if(response.body.code == '11')  
                {
                 alert(response.body.message)
                }
-            
+            else if(response.body.code == '05')  
+               {
+                alert(response.body.message)
+               }
         })
         .catch(function(){
           alert("出错啦")

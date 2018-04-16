@@ -45,8 +45,9 @@
                         <!-- <span></span>
                         <span><input name="seller" type="radio" value="注册成卖家" />注册成卖家</span> -->
                         <form action="" method="get">
-                            <label id="buyer"><input name="zuce" type="radio" value="注册成买家"  checked/>注册成买家</label>
-                            <label><input name="zuce" type="radio" value="注册成卖家" id="seller"/>注册成卖家</label>
+                            <label ><input name="zuce" type="radio" v-model="flagrole" value="buyer"/>注册成买家</label>
+                            <label><input name="zuce" type="radio"  value="seller"  v-model="flagrole"/>注册成卖家</label>
+                            <label><input name="zuce" type="radio"  value="admin"  v-model="flagrole"/>注册成管理员</label>
                         </form>
                         <div class="link-item">
                             <a class="link" @click="toLogin">已有帐号，去登录>></a>
@@ -70,11 +71,11 @@ components:{
 },
 data(){
    return{
-        flagrole:'buyer',//角色默认为买家
+        flagrole:'',//角色默认为买家
         username:'',//用户名
         password:'',//密码
         repassword:'',//再次确认密码
-        mobile:'',//电话号码
+        phone:'',//电话号码
         
         email:'',//邮箱
         ErrorTip:'',//错误提示
@@ -86,13 +87,7 @@ mounted(){
 },
 updated(){
   var _this=this
-    if ($('#buyer input')[0].checked) {
-        _this.flagrole="buyer"
-    }
-    else{
-      
-       _this.flagrole="seller"
-    }
+    
    
    //当ErrorTip有值的时候才会显示
     if (this.ErrorTip!='')
@@ -140,7 +135,7 @@ methods:{
                   'email':_this.email,
                   'flagrole':_this.flagrole,
                   'headurl':'',
-                  'mobile':_this.mobile,
+                  'mobile':_this.phone,
                   'password':_this.password,
                   'state':'login',  
         }, {
@@ -175,15 +170,16 @@ methods:{
 <style scoped>
  /* 最外层容器 */
 .page-wrap{
-    padding: 40px 0;
-    background: #238e68;
+    padding: 15px 0;
+    /*background: #238e68;*/
+     background: url('../assets/images/login/bg.jpg') no-repeat ; height:500px; width:1360px;
 }
 /* 表单框 */
 .user-con{
     position: relative;
     margin: 0 auto;
     width: 400px;
-    background: #fff;
+    background: rgba(255,255,255,0.8);
 }
 .user-con .user-title{
     text-align: center;
@@ -252,6 +248,6 @@ methods:{
 }
 .user-con .link-item .link{
     margin-left: 10px;
-    color: #999;
+    color: #000;
 }
 </style>

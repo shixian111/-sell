@@ -19,16 +19,15 @@
 						<div class="tit">商品分类</div>
 						<dl>
 							<dt>
-								<a >花卉植物</a>
+								<a @click="AllProduct">花卉植物</a>
 							</dt>
 							<dd>
+				
+								<a @click="ChangeSmall">小型室内植物</a>
+
 								
 
-								<a >小型室内植物</a>
-
-								
-
-								<a >吸甲醛的盆景植物</a>
+								<a @click="ChangeJiaQ">吸甲醛的盆景植物</a>
 
 								
 
@@ -46,15 +45,54 @@
 								<span>商品列表</span>
 
 								
-								<a href="">
-									<img src="../assets/images/product/shop_price_default.gif" alt="按价格排序"></a>
+								<!-- <a href="">
+									<img src="../assets/images/product/shop_price_default.gif" alt="按价格排序"></a> -->
 								
 
 							</h3>
 							<div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 5px;">
-								<div class="goodsItem" v-for="(item,index) in tableData" >
-									<div class="goods_border" >
-										<a  target="_blank" @click="checkDetail">
+								<!-- 吸甲醛的花卉植物 -->
+								<div class="goodsItem" v-for="(item,index) in tableData" v-show="item.type!=0&&flag==1">
+									<div class="goods_border"  >
+										<a  target="_blank" @click="checkDetail(item.id,item.userid)">
+											<img src="http://www.028huahui.cn/images/201706/thumb_img/53_thumb_G_1498613330768.jpg" alt="吊绿萝" class="goodsimg"></a>
+										<br>
+										<p>
+											<a  title="吊绿萝" target="_blank">{{item.goodsname}}</a>
+										</p> <font class="shop_s">${{item.price}}.00</font>
+										<br>
+										<a href="javascript:addToCart(53)">
+											<img src="../assets/images/product/goumai.gif"></a>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="javascript:collect(53);">
+											<img src="../assets/images/product/shoucang.gif"></a>
+										<br>
+										已售:{{item.soldnumber}}  &nbsp; 评价数:36条
+										<br>可购买数量:{{item.storage}}</div>
+								</div>
+								<!-- 小型室内植物 -->
+								<div class="goodsItem" v-for="(item,index) in tableData" v-show="item.type==0&&flag==0">
+									<div class="goods_border"  >
+										<a  target="_blank" @click="checkDetail(item.id,item.userid)">
+											<img src="http://www.028huahui.cn/images/201706/thumb_img/53_thumb_G_1498613330768.jpg" alt="吊绿萝" class="goodsimg"></a>
+										<br>
+										<p>
+											<a  title="吊绿萝" target="_blank">{{item.goodsname}}</a>
+										</p> <font class="shop_s">${{item.price}}.00</font>
+										<br>
+										<a href="javascript:addToCart(53)">
+											<img src="../assets/images/product/goumai.gif"></a>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="javascript:collect(53);">
+											<img src="../assets/images/product/shoucang.gif"></a>
+										<br>
+										已售:{{item.soldnumber}}  &nbsp; 评价数:36条
+										<br>可购买数量:{{item.storage}}</div>
+								</div>
+								<!-- 所有植物 -->
+								<div class="goodsItem" v-for="(item,index) in tableData" v-show="flag==-1">
+									<div class="goods_border"  >
+										<a  target="_blank" @click="checkDetail(item.id,item.userid)">
 											<img src="http://www.028huahui.cn/images/201706/thumb_img/53_thumb_G_1498613330768.jpg" alt="吊绿萝" class="goodsimg"></a>
 										<br>
 										<p>
@@ -100,6 +138,7 @@
 			return{
 				    recordsTotal:'',//总记录
 					tableData:[],
+					flag:-1,//控制植物类型的显示
 			}
 		},
 		created(){
@@ -111,7 +150,7 @@
 			this.$http.post(IP+'/bonsai/goods/list',
 			{
 				'pageNum':1,
-				'pageSize':12,
+				'pageSize':30,
 				
 			},
 			{
@@ -145,9 +184,20 @@
         })
 			},
 			//查看详情
-		checkDetail(){
-           this.$router.push({path:'/nav/index/detail'})
+		checkDetail(productId,sellerId){
+			
+           this.$router.push({path:'/nav/index/detail',query: {productId,sellerId}})
+           // this.$route.params.productId  this.$route.params.sellerId
+		},//根据分类查看植物
+		ChangeSmall(){
+			this.flag=0
 		},
+		ChangeJiaQ(){
+			this.flag=1
+		},
+		AllProduct(){
+			this.flag=-1
+		}
 		},
 		
 	}

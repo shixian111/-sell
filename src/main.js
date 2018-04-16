@@ -11,6 +11,7 @@ import './assets/js/bootstrap.min'
 import VueAwesomeSwiper from 'vue-awesome-swiper'//引入轮播组件
 import './assets/css/style.css'//引入一个自定义的css样式
 import ElementUI from 'element-ui'
+
 import IP from './Global_ip'
 import Vuex from 'vuex'
 import store from './vuex/store'

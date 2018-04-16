@@ -20,6 +20,8 @@ import Myorder from '@/usercenter/MyOrder.vue'
 import Comment from '@/usercenter/comment.vue'
 import Message from '@/usercenter/message.vue'
 import Address from '@/usercenter/address.vue'
+import Userinfo from '@/usercenter/userinfo.vue'
+//import AliPay from '@/pay/alipay.vue'
 
 // 管理员界面
 import ManagerHome from '@/manager/home'
@@ -32,6 +34,7 @@ import ManagerNews from '@/manager/mgnews'
 //卖家界面
 import ManagerProduct from '@/seller/mgproduct'
 import AddProduct from '@/seller/addproduct'
+import ManagerOrder from '@/seller/mgorder'
 
 
 Vue.use(Router)
@@ -73,6 +76,13 @@ export default new Router({
 
        
           }, 
+        //   {
+        //       path:'/nav/cart/alipay',
+        // name:'AliPay',
+        // component:AliPay,
+
+       
+        //   }, 
           {
               path:'/nav/culture',
         name:'Culture',
@@ -119,6 +129,11 @@ export default new Router({
                   path:'/nav/usercenter/address',
                   name:'Address',
                   component:Address,
+                },
+                {
+                  path:'/nav/usercenter/userinfo',
+                  name:'Userinfo',
+                  component:Userinfo,
                 },
 
               ]
@@ -173,6 +188,12 @@ export default new Router({
           // 懒加载
           name: 'AddProduct',
          component: AddProduct,
+        },
+         {
+          path : '/mg/Home/mgorder',
+          // 懒加载
+          name: 'ManagerOrder',
+         component: ManagerOrder,
         },
         ]
     
